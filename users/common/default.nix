@@ -4,6 +4,7 @@
 	imports = [
 		../../modules/browsers
 		../../modules/editors
+		../../modules/games
 	];
 
 	config = {
@@ -15,6 +16,10 @@
 
       editors = {
         neovim.enable = true;
+      };
+
+      games = {
+        minecraft.enable = true;
       };
     };
   };
