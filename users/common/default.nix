@@ -7,6 +7,10 @@
 		../../modules/games
 	];
 
+  programs.home-manager.enable = true;
+
+	home.stateVersion = "24.11"; # Current version of NixOS
+
 	config = {
     modules = {
       browsers = {

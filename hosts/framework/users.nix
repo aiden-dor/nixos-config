@@ -8,6 +8,7 @@
 	];
 
 	users.users.david.isNormalUser = true;
+	users.users.gorplet.isNormalUser = true;
 
 	home-manager = {
     sharedModules = [
@@ -24,6 +25,7 @@
 		};
 
 		users.david = import ../../users/david;
+		users.gorplet = import ../../users/gorplet;
 		users.root = import ../../users/root;
 	};
 }
