@@ -1,8 +1,10 @@
-{ config,
-  ... }:
+{ ... }:
 {
 	imports = [
-    ./base.nix
+		../../modules/browsers
+		../../modules/editors
+		../../modules/games
+    ../../modules/social
 	];
 
 	config = {
@@ -14,14 +16,6 @@
 
       editors = {
         neovim.enable = true;
-      };
-
-      games = {
-        minecraft.enable = true;
-      };
-
-      social = {
-        discord.enable = true;
       };
     };
   };
