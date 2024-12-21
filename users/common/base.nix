@@ -5,6 +5,7 @@
 		../../modules/editors
 		../../modules/games
     ../../modules/social
+    ../../modules/media
 	];
 
 	config = {

@@ -1,7 +1,4 @@
-{	inputs,
-	outputs,
-	config,
-	pkgs,
+{	pkgs,
 	... }: 
 {
 	imports = [
@@ -14,7 +11,10 @@
 		./users.nix
 	];
 
-	hosts.common.shell.fancyShell = true;
+	hosts.common = {
+    shell.fancyShell = true;
+    networking.spotifyLocalDiscovery.enable = true;
+  };
 
 	networking.hostName = "DavidFramework";
 
