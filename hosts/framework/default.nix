@@ -11,9 +11,11 @@
 		./users.nix
 	];
 
-	hosts.common = {
-    shell.fancyShell = true;
-    networking.spotifyLocalDiscovery.enable = true;
+	hosts = {
+    common = {
+      shell.fancyShell = true;
+      firewall.spotifyLocalDiscovery.enable = true;
+    };
   };
 
 	networking.hostName = "DavidFramework";
