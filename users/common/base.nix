@@ -6,6 +6,8 @@
 		../../modules/games
     ../../modules/social
     ../../modules/media
+    # ../../modules/wayland
+    ../../terminals
 	];
 
 	config = {

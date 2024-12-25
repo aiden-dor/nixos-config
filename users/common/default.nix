@@ -1,5 +1,4 @@
-{ config,
-  ... }:
+{ ... }:
 {
 	imports = [
     ./base.nix
@@ -22,6 +21,10 @@
 
       social = {
         discord.enable = true;
+      };
+      
+      media = {
+        music.spotify.enable = true;
       };
     };
   };
