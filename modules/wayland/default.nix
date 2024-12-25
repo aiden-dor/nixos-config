@@ -10,7 +10,11 @@ in {
     ./hyperland
   ];
 
-  config = lib.mkIf (cfg.sway.enable || cfg.hyperland.enable) {
+  options.modules.wayland = {
+      enable = lib.mkEnableOption "Use wayland protocol";
+    };
+
+  config = lib.mkIf (cfg.enable) {
     # This lets electron based applications work within
     # wayland
     home.sessionVariables = {

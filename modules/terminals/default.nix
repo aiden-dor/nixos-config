@@ -6,11 +6,11 @@
   ];
 
   options.modules.terminals = {
-    defaultTerminal = lib.mkOption {
-      type = lib.types.string;
+    default = lib.mkOption {
+      type = lib.types.str;
       default = "";
       description = "The default terminal to use across your window managers";
-      example = "Kitty";
+      example = "kitty";
     };
   };
 }

@@ -3,6 +3,6 @@
 {
   options.modules.wayland.hyperland = 
   {
-    enable = lib.mkEnableOptions "Enable the hyperland window manager";
+    enable = lib.mkEnableOption "Enable the hyperland window manager";
   };
 }

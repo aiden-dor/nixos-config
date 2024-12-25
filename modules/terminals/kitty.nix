@@ -9,7 +9,7 @@ in {
     enable = lib.mkEnableOption "Use the kitty terminal";
   };
 
-  config =  lib.mnIf cfg.enable {
+  config =  lib.mkIf cfg.enable {
     programs.kitty = lib.mkForce {
       enable = true;
       settings = {

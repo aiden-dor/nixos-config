@@ -8,8 +8,12 @@
 	];
 
   # Required for sway to be configured through home-manager
-  security.polkit.enable = true;
+  # security.polkit.enable = true;
 
+	# programs.sway = {
+	# 	enable = true;
+	# 	wrapperFeatures.gtk = true;
+	# };
 
 	users.users.david.isNormalUser = true;
 	users.users.gorplet.isNormalUser = true;
@@ -18,6 +22,7 @@
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
       inputs.nixvim.homeManagerModules.nixvim
+      inputs.stylix.homeManagerModules.sylix
     ];
 
 		useUserPackages = true;
