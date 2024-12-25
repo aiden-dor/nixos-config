@@ -2,11 +2,10 @@
 {
 	imports = [ 
 		../common
-    ./secrets
 	];
 
-	home.username = "david";
-	home.homeDirectory = "/home/david";
+	home.username = "gorplet";
+	home.homeDirectory = "/home/gorplet";
 
   programs.home-manager.enable = true;
 

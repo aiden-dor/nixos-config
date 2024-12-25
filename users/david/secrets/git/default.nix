@@ -11,6 +11,10 @@
       enable = true;
       userName = "catmaniscatlord";
       userEmail = "catmanisacatlord@gmail.com";
+      extraConfig = ''
+        [safe]
+          directory = /repos/*
+      '';
     };
   };
 }

@@ -8,8 +8,17 @@
 		./fonts.nix
 		./networking.nix
 		./nix.nix
-		./nixpkgs.nix
 		./nixos.nix
+		./nixpkgs.nix
 		./shell.nix
+    ./firewall
 	];
+
+  hosts = {
+    common = {
+      firewall = {
+        ping.enable = true;
+      };
+    };
+  };
 }

@@ -1,3 +1,5 @@
+{ ... }:
 {
-	networking.networkmanager.enable = true;
+  # use network manager by default
+  networking.networkmanager.enable = true;
 }
