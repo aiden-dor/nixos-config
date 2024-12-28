@@ -2,7 +2,7 @@
 {
 	imports = [
     ./base.nix
-    ./theme.nix
+    ./style.nix
 	];
 
 	config = {

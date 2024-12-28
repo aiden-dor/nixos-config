@@ -11,7 +11,12 @@
 		./nixos.nix
 		./nixpkgs.nix
 		./shell.nix
+    ./bluetooth.nix
     ./firewall
+    ./fprintd.nix
+    ./printing.nix
+    ./regreet.nix
+    ./sound.nix
 	];
 
   hosts = {
