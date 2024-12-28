@@ -1,6 +1,7 @@
 {	inputs,
 	outputs,
 	config,
+  pkgs,
 	... }:
 {
 	imports = [
@@ -9,6 +10,9 @@
 
   # Required for sway to be configured via home-manager (Potentiall useless)
   # security.polkit.enable = true;
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh; 
 
 	users.users.david.isNormalUser = true;
 	users.users.gorplet.isNormalUser = true;
