@@ -7,13 +7,9 @@
 		inputs.home-manager.nixosModules.home-manager
 	];
 
-  # Required for sway to be configured through home-manager
-  # security.polkit.enable = true;
 
-	# programs.sway = {
-	# 	enable = true;
-	# 	wrapperFeatures.gtk = true;
-	# };
+  # Required for sway to be configured via home-manager (Potentiall useless)
+  # security.polkit.enable = true;
 
 	users.users.david.isNormalUser = true;
 	users.users.gorplet.isNormalUser = true;

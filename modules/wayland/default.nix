@@ -25,6 +25,9 @@ in {
     # };
 
     home.packages = with pkgs; [
+      # needed for gtk themeing I believe
+      pkgs.dconf
+
       # screenshot functionality
       (flameshot.override {enableWlrSupport = true;}) # may need more configuration
       grim # So flameshot works with wayland

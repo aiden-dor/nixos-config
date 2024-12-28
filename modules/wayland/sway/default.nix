@@ -27,7 +27,6 @@ in {
 
     # Necessary packages that we will need
     home.packages = with pkgs; [
-
     ];
 
     wayland.windowManager.sway = with pkgs; let
