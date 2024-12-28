@@ -13,7 +13,6 @@
     fprintd.enable = true;
     printing.enable = true;
     regreet.enable = true;
-    shell.fancyShell = true;
     sound.enable = true;
   };
 

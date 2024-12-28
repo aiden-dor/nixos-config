@@ -10,7 +10,6 @@
 		./nix.nix
 		./nixos.nix
 		./nixpkgs.nix
-		./shell.nix
     ./bluetooth.nix
     ./firewall
     ./fprintd.nix

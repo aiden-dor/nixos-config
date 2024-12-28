@@ -17,12 +17,6 @@ in {
     };
 
   config = lib.mkIf (cfg.enable) {
-    # May not be needed
-    # This lets electron based applications work within
-    # wayland
-    # home.sessionVariables = {
-    #   NIXOS_OZONE_WL = 1;
-    # };
 
     home.packages = with pkgs; [
       # needed for gtk themeing I believe

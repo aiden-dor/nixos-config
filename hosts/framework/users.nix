@@ -7,7 +7,6 @@
 		inputs.home-manager.nixosModules.home-manager
 	];
 
-
   # Required for sway to be configured via home-manager (Potentiall useless)
   # security.polkit.enable = true;
 

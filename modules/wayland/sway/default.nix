@@ -36,7 +36,10 @@ in {
         up = "j";
         down = "k";
       in  {
+
       enable = true;
+      checkConfig = true;
+      wrapperFeatures.gtk = true;
 
       config = {
         modifier = "${mod}";

@@ -4,10 +4,11 @@
 		../../modules/browsers
 		../../modules/editors
 		../../modules/games
-    ../../modules/social
+		../../modules/shells
     ../../modules/media
-    ../../modules/wayland
+    ../../modules/social
     ../../modules/terminals
+    ../../modules/wayland
 	];
 
 	config = {
@@ -19,6 +20,10 @@
 
       editors = {
         neovim.enable = true;
+      };
+
+      shells = {
+        zsh.enable = true;
       };
     };
   };
