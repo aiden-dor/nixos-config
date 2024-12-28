@@ -41,5 +41,11 @@ in {
       mako 
     ]
       ++ (lib.optional osConfig.hosts.common.sound.enable wireplumber);
+
+    # AHHHHHHHHHH
+    home.sessionVariables = {
+      MOZ_ENABLE_WAYLAND = 1;
+      NIXOS_OZONE_WL = 1; # Electron
+    };
   };
 }
