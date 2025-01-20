@@ -15,7 +15,7 @@
             }
           end
         '';
-        flavour = "mocha"; # "latte", "mocha", "frappe", "macchiato" or raw lua code
+        flavor = "mocha"; # "latte", "mocha", "frappe", "macchiato" or raw lua code
         no_bold = false;
         no_italic = false;
         no_underline = false;

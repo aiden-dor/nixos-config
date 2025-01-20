@@ -1,0 +1,6 @@
+{ ... }:
+{
+  plugins.persistence = {
+    enable = true;
+  };
+}

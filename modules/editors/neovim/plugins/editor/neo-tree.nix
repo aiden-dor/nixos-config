@@ -17,26 +17,38 @@
     };
 
     defaultComponentConfigs = {
-      indent = {
-        withExpanders = true;
-        expanderCollapsed = "󰅂";
-        expanderExpanded = "󰅀";
-        expanderHighlight = "NeoTreeExpander";
-      };
-
-      gitStatus = {
-        symbols = {
-          added = " ";
-          conflict = "󰩌 ";
-          deleted = "󱂥";
-          ignored = " ";
-          modified = " ";
-          renamed = "󰑕";
-          staged = "󰩍";
-          unstaged = "";
-          untracked = " ";
-        };
-      };
+      # indent = {
+      #   withExpanders = true;
+      #   expanderCollapsed = "󰅂";
+      #   expanderExpanded = "󰅀";
+      #   expanderHighlight = "NeoTreeExpander";
+      # };
+      #
+      # icon = {
+      #   folderClosed = "󰉋 ";
+      #   folderOpen = "󰝰 ";
+      #   folderEmpty = "󰉖 ";
+      #   folderEmptyOpen = "󰷏 ";
+      #   default = "*";
+      #   highlight = "NeoTreeFileIcon";
+      # };
+      #
+      # gitStatus = {
+      #   symbols = {
+      #     # change type
+      #     added = " ";
+      #     deleted = " ";
+      #     modified = " ";
+      #     renamed = " ";
+      #
+      #     # status type
+      #     untracked = " ";
+      #     ignored = " ";
+      #     unstaged = "";
+      #     staged = "";
+      #     conflict = " ";
+      #   };
+      # };
     };
   };
 
