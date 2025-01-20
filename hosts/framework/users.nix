@@ -1,28 +1,46 @@
 {	inputs,
 	outputs,
 	config,
+  pkgs,
 	... }:
 {
 	imports = [
 		inputs.home-manager.nixosModules.home-manager
 	];
 
-  # Required for sway to be configured through home-manager
-  # security.polkit.enable = true;
+  # lets wayland run apps as root
+  security.polkit.enable = true;
 
-	# programs.sway = {
-	# 	enable = true;
-	# 	wrapperFeatures.gtk = true;
-	# };
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh; 
 
-	users.users.david.isNormalUser = true;
-	users.users.gorplet.isNormalUser = true;
+  # Stupid so that sway shows up in greetd.
+  # TODO: move this into a os config variable to enable it as a session for users by default.
+  programs.sway.enable = true;
+
+  # Stupid shit so that electron apps work 
+  # I hate it and think that its stupid
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    # WAYLAND_DISPLAY = "1"; Setting this to true breaks our greeter
+  };
+
+	users.users = {
+    david = {
+      isNormalUser = true;
+      extraGroups = [ "video" "networkmanager" ];
+    };
+    gorplet = { 
+      isNormalUser = true;
+      extraGroups = [ "video" "networkmanager" ];
+    };
+  };
 
 	home-manager = {
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
       inputs.nixvim.homeManagerModules.nixvim
-      inputs.stylix.homeManagerModules.sylix
+      inputs.stylix.homeManagerModules.stylix
     ];
 
 		useUserPackages = true;
