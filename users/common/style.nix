@@ -6,7 +6,7 @@
 
     # see https://github.com/tinted-theming/schemes 
     # For more color schemes
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     image = pkgs.fetchurl {
       url = "https://static-community.frame.work/original/2X/f/f1ee3ca6ddf6aa3c01e3b50ed3e149ab7e4211c1.jpeg";

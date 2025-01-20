@@ -1,5 +1,4 @@
-{ config,
-  ... }:
+{ ... }:
 {
   config = {
     sops.secrets = builtins.listToAttrs (map (name: {
@@ -11,10 +10,11 @@
       enable = true;
       userName = "catmaniscatlord";
       userEmail = "catmanisacatlord@gmail.com";
-      extraConfig = ''
-        [safe]
-          directory = /repos/*
-      '';
+      extraConfig = { 
+        safe = {
+          directory = "/repos/*";
+        };
+      };
     };
   };
 }

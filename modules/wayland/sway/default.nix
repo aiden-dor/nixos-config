@@ -1,7 +1,6 @@
 { lib,
   pkgs,
   config,
-  osConfig,
   options,
   ... }:
 let
@@ -21,17 +20,21 @@ in {
     };
   };
 
+  imports = [ 
+    ./waybar.nix 
+  ];
+
   config = lib.mkIf cfg.enable {
     # automatically anable wayland if using sway
     modules.wayland.enable = true;
 
     # Necessary packages that we will need
     home.packages = with pkgs; [
+      light
     ];
 
     wayland.windowManager.sway = with pkgs; let
-        mod = "Mod4";
-        left = "h";
+        mod = "Mod4"; left = "h";
         right = "l";
         up = "j";
         down = "k";
@@ -90,13 +93,22 @@ in {
           commands = [];
         };
 
+        defaultWorkspace = "1";
+
         assigns = {
           "4" = [
-            { instance = "discord"; }
+            { app_id = "discord"; }
           ];
           "10" = [
             { app_id = "spotify"; }
           ];
+        };
+
+        floating = {
+          modifier = "${mod}";
+          border = 3;
+          titlebar = false;
+          criteria = [ ];
         };
 
         keybindings =  lib.mkOptionDefault {
@@ -108,16 +120,18 @@ in {
           "${mod}+c" = "exec ${cliphist}/bin/cliphist list | ${rofi}/bin/rofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy";
 
           # rofi: power menu
-          "${mod}+x" = "exec ${rofi}/bin/rofi -show menu -modi 'menu:${rofi-power-menu}/bin/rofi-power-menu --no-symbols'";
+          "${mod}+x" = "exec ${rofi}/bin/rofi -show menu -modi 'menu:${rofi-power-menu}/bin/rofi-power-menu'";
           # rofi: filebrowser
           "${mod}+g" = "exec ${rofi}/bin/rofi -show filebrowser";
           # rofi: emoji
           "${mod}+m" = "exec ${rofimoji}/bin/rofimoji";
-          # pick color
+          # bpick color
           "${mod}+n" = "exec ${wl-color-picker}/bin/wl-color-picker clipboard";
           # mirror screen
           "${mod}+o" = "exec ${wl-mirror}/bin/wl-present mirror";
-          # # Change screen layout
+          # Screenshot 
+          "${mod}+Shift+s" = "exec ${grim}/bin/grim -g \"$(${slurp}/bin/slurp -d)\" - | ${swappy}/bin/swappy -f -";
+          # Change screen layout
           "${mod}+p" = "exec ${wlr-layout-ui}";
 
           # modes
@@ -196,36 +210,36 @@ in {
           "XF86MonBrightnessDown" = "exec ${light}/bin/light -U 2";
         };
 
-      modes = {
-        audio = {
-          # audio = "launch: [i]input [o]output";
-          Escape = "mode default";
-          Return = "mode default";
-          "i" = "exec ${rofi-pulse-select}/bin/rofi-pulse-select source, mode default";
-          "o" = "exec ${rofi-pulse-select}/bin/rofi-pulse-select sink, mode default";
+        modes = {
+          audio = {
+            # audio = "launch: [i]input [o]output";
+            Escape = "mode default";
+            Return = "mode default";
+            "i" = "exec ${rofi-pulse-select}/bin/rofi-pulse-select source, mode default";
+            "o" = "exec ${rofi-pulse-select}/bin/rofi-pulse-select sink, mode default";
+          };
+          resize = {
+            Escape = "mode default";
+            Return = "mode default";
+            "${down}" = "resize grow height 10 px or 10 ppt";
+            "${left}" = "resize shrink width 10 px or 10 ppt";
+            "${right}" = "resize grow width 10 px or 10 ppt";
+            "${up}" = "resize shrink height 10 px or 10 ppt";
+          };
+          session = {
+            # session = launch:
+            # [h]ibernate [p]oweroff [r]eboot
+            # [s]uspend [l]ockscreen log[o]ut
+            Escape = "mode default";
+            Return = "mode default";
+            "h" = "exec ${systemd}/bin/systemctl hibernate, mode default";
+            "p" = "exec ${systemd}/bin/systemctl poweroff, mode default";
+            "r" = "exec ${systemd}/bin/systemctl reboot, mode default";
+            "s" = "exec ${systemd}/bin/systemctl suspend, mode default";
+            "l" = "exec ${swaylock}/bin/swaylock, mode default";
+            "o" = "exec ${sway}/bin/swaymsg exit, mode default";
+          };
         };
-        resize = {
-          Escape = "mode default";
-          Return = "mode default";
-          "${down}" = "resize grow height 10 px or 10 ppt";
-          "${left}" = "resize shrink width 10 px or 10 ppt";
-          "${right}" = "resize grow width 10 px or 10 ppt";
-          "${up}" = "resize shrink height 10 px or 10 ppt";
-        };
-        session = {
-          # session = launch:
-          # [h]ibernate [p]oweroff [r]eboot
-          # [s]uspend [l]ockscreen log[o]ut
-          Escape = "mode default";
-          Return = "mode default";
-          "h" = "exec ${systemd}/bin/systemctl hibernate, mode default";
-          "p" = "exec ${systemd}/bin/systemctl poweroff, mode default";
-          "r" = "exec ${systemd}/bin/systemctl reboot, mode default";
-          "s" = "exec ${systemd}/bin/systemctl suspend, mode default";
-          "l" = "exec ${swaylock}/bin/swaylock, mode default";
-          "o" = "exec ${sway}/bin/swaymsg exit, mode default";
-        };
-      };
       };
     };
   };

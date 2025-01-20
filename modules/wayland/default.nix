@@ -10,6 +10,7 @@ in {
     ./sway
     ./hyperland
     ./rofi.nix
+    ./screenshots.nix
   ];
 
   options.modules.wayland = {
@@ -21,10 +22,6 @@ in {
     home.packages = with pkgs; [
       # needed for gtk themeing I believe
       pkgs.dconf
-
-      # screenshot functionality
-      (flameshot.override {enableWlrSupport = true;}) # may need more configuration
-      grim # So flameshot works with wayland
 
       # clipboard functionality
       wl-clipboard 
@@ -42,10 +39,5 @@ in {
     ]
       ++ (lib.optional osConfig.hosts.common.sound.enable wireplumber);
 
-    # AHHHHHHHHHH
-    home.sessionVariables = {
-      MOZ_ENABLE_WAYLAND = 1;
-      NIXOS_OZONE_WL = 1; # Electron
     };
-  };
 }

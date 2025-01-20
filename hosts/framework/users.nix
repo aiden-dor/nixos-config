@@ -26,8 +26,14 @@
   };
 
 	users.users = {
-    david.isNormalUser = true;
-    gorplet.isNormalUser = true;
+    david = {
+      isNormalUser = true;
+      extraGroups = [ "video" "networkmanager" ];
+    };
+    gorplet = { 
+      isNormalUser = true;
+      extraGroups = [ "video" "networkmanager" ];
+    };
   };
 
 	home-manager = {
