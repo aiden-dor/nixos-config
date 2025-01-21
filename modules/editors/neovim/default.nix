@@ -10,6 +10,15 @@
 
   config = lib.mkIf config.modules.editors.neovim.enable {
     programs.nixvim = {
+      enable = true;
+      defaultEditor = true;
+
+      # set vim to use neovim
+      vimAlias = true;
+      # dont let vi alias to neovim. Useful for large file editing
+      # as neovim tends to shit itself with large >2MB files
+      viAlias = false;
+
       imports = [
         # General Configuration
         ./settings.nix
@@ -31,7 +40,6 @@
         ./plugins/snippets/luasnip.nix
 
         # Editor plugins and configurations
-        ./plugins/editor/bufdelete.nix
         ./plugins/editor/neo-tree.nix
         ./plugins/editor/treesitter.nix
         ./plugins/editor/undotree.nix
@@ -42,6 +50,7 @@
         ./plugins/editor/navic.nix
 
         # UI plugins
+        ./plugins/ui/snacks-bufdelete.nix
         ./plugins/ui/bufferline.nix
         ./plugins/ui/lualine.nix
         ./plugins/ui/startup.nix
@@ -52,11 +61,11 @@
         ./plugins/lsp/fidget.nix
 
         # Git
-        ./plugins/git/lazygit.nix
+        ./plugins/git/snacks-lazygit.nix
         ./plugins/git/gitsigns.nix
 
         # Utils
-        ./plugins/utils/telescope.nix
+        ./plugins/utils/snacks-picker.nix
         ./plugins/utils/whichkey.nix
         ./plugins/utils/extra_plugins.nix
         ./plugins/utils/mini.nix
@@ -66,14 +75,6 @@
         ./plugins/utils/persistence.nix
       ];
 
-      enable = true;
-      defaultEditor = true;
-
-      # set vim to use neovim
-      vimAlias = true;
-      # dont let vi alias to neovim. Useful for large file editing
-      # as neovim tends to shit itself with large >2MB files
-      viAlias = false;
     };
   };
 
