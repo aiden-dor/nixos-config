@@ -1,10 +1,13 @@
-{ pkgs,
+{
+  pkgs,
   lib,
   config,
-  ... }:
-let 
+  ...
+}:
+let
   cfg = config.modules.dev;
-in {
+in
+{
 
   options.modules.dev = {
     enable = lib.mkEnableOption "Install development related packages";
@@ -12,7 +15,11 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      lazygit 
+      # languages
+      texliveFull
+
+      # tools
+      lazygit
     ];
   };
 }

@@ -26,6 +26,9 @@
         ts_ls = {
           enable = true;
         };
+        kotlin_language_server = {
+          enable = true;
+        };
         marksman = {
           enable = true;
         };
@@ -33,6 +36,9 @@
           enable = true;
         };
         gopls = {
+          enable = true;
+        };
+        texlab = {
           enable = true;
         };
         # bloat

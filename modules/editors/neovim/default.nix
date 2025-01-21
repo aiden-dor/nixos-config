@@ -73,6 +73,9 @@
         ./plugins/utils/toggleterm.nix
         ./plugins/utils/web-devicons.nix
         ./plugins/utils/persistence.nix
+
+        # Language specific
+        ./plugins/lang/latex.nix
       ];
     };
   };

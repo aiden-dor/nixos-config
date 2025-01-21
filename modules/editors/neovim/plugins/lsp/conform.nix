@@ -103,17 +103,18 @@
             "isort"
           ];
           lua = [ "stylua" ];
-          nix = [ "nixfmt-rfc-style" ];
           markdown = {
             __unkeyed-1 = "prettierd";
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
+          nix = [ "nixfmt-rfc-style" ];
           yaml = {
             __unkeyed-1 = "prettierd";
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
+          json = [ "jq" ];
           terraform = [ "terraform_fmt" ];
           bicep = [ "bicep" ];
           bash = [
@@ -121,7 +122,7 @@
             "shellharden"
             "shfmt"
           ];
-          json = [ "jq" ];
+          kotlin = [ "ktlint" ];
           "_" = [ "trim_whitespace" ];
         };
 
@@ -137,6 +138,9 @@
           };
           alejandra = {
             command = "${lib.getExe pkgs.alejandra}";
+          };
+          ktlint = {
+            command = "${lib.getExe pkgs.ktlint}";
           };
           jq = {
             command = "${lib.getExe pkgs.jq}";
