@@ -44,7 +44,7 @@
         ./plugins/editor/treesitter.nix
         ./plugins/editor/undotree.nix
         ./plugins/editor/illuminate.nix
-        ./plugins/editor/indent-blankline.nix
+        ./plugins/editor/snacks-indent.nix
         ./plugins/editor/todo-comments.nix
         ./plugins/editor/copilot-chat.nix
         ./plugins/editor/navic.nix
@@ -74,8 +74,6 @@
         ./plugins/utils/web-devicons.nix
         ./plugins/utils/persistence.nix
       ];
-
     };
   };
-
 }
