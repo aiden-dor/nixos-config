@@ -5,6 +5,7 @@
 		../../modules/editors
 		../../modules/games
 		../../modules/shells
+    ../../modules/dev
     ../../modules/media
     ../../modules/social
     ../../modules/terminals
@@ -24,6 +25,10 @@
 
       shells = {
         zsh.enable = true;
+      };
+
+      dev = {
+        enable = true;
       };
     };
   };

@@ -1,15 +1,24 @@
-{ lib,
+{
+  lib,
+  pkgs,
   config,
-  ... }:
+  ...
+}:
 let
   cfg = config.modules.terminals.kitty;
-in {
+in
+{
 
   options.modules.terminals.kitty = {
     enable = lib.mkEnableOption "Use the kitty terminal";
   };
 
-  config =  lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
+
+    home.packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    ];
+
     programs.kitty = lib.mkForce {
       enable = true;
       settings = {
@@ -20,30 +29,34 @@ in {
         window_padding_width = 10;
         background_opacity = "0.5";
         background_blur = 5;
-        # Mappings stolen from https://wiki.nixos.org/wiki/Kitty
-        # I have no idea what they do.
-        symbol_map = let
-          mappings = [
-            "U+23FB-U+23FE"
-            "U+2B58"
-            "U+E200-U+E2A9"
-            "U+E0A0-U+E0A3"
-            "U+E0B0-U+E0BF"
-            "U+E0C0-U+E0C8"
-            "U+E0CC-U+E0CF"
-            "U+E0D0-U+E0D2"
-            "U+E0D4"
-            "U+E700-U+E7C5"
-            "U+F000-U+F2E0"
-            "U+2665"
-            "U+26A1"
-            "U+F400-U+F4A8"
-            "U+F67C"
-            "U+E000-U+E00A"
-            "U+F300-U+F313"
-            "U+E5FA-U+E62B"
-          ];
-        in
+        # Mappings from https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
+        symbol_map =
+          let
+            mappings = [
+              "U+23fb-U+23fe"
+              "U+2665"
+              "U+26a1"
+              "U+2b58"
+              "U+e000-U+e00a"
+              "U+e0a0-U+e0a2"
+              "U+e0a3"
+              "U+e0b0-U+e0b3"
+              "U+e0b4-U+e0c8"
+              "U+e0ca"
+              "U+e0cc-U+e0d7"
+              "U+e200-U+e2a9"
+              "U+e300-U+e3e3"
+              "U+e5fa-U+e6b7"
+              "U+e700-U+e8ef"
+              "U+ea60-U+ec1e"
+              "U+ed00-U+efce"
+              "U+f000-U+f2ff"
+              "U+f300-U+f381"
+              "U+f400-U+f533"
+              "U+f500-U+fd46"
+              "U+f0001-U+f1af0"
+            ];
+          in
           (builtins.concatStringsSep "," mappings) + " Symbols Nerd Font";
       };
     };

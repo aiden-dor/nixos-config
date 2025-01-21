@@ -7,9 +7,9 @@
           diagnostics = "nvim_lsp";
           mode = "buffers";
 
-          close_icon = " ";
-          buffer_close_icon = "󰱝 ";
-          modified_icon = "󰔯 ";
+          close_icon = " ";
+          buffer_close_icon = " ";
+          modified_icon = " ";
 
           offsets = [
             {
@@ -58,15 +58,6 @@
       action = "<cmd>BufferLineCyclePrev<cr>";
       options = {
         desc = "Cycle to previous buffer";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>bd";
-      action = "<cmd>bdelete<cr>";
-      options = {
-        desc = "Delete buffer";
       };
     }
 

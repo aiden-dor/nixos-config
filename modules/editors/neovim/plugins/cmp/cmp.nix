@@ -67,18 +67,23 @@
         };
       };
     };
+
     cmp-nvim-lsp = {
       enable = true;
     }; # lsp
+
     cmp-buffer = {
       enable = true;
     };
+
     cmp-path = {
       enable = true;
     }; # file system paths
+
     cmp_luasnip = {
       enable = true;
     }; # snippets
+
     cmp-cmdline = {
       enable = false;
     }; # autocomplete for cmdline
@@ -89,26 +94,26 @@
           Text = "󰊄",
           Method = " ",
           Function = "󰡱 ",
-          Constructor = " ",
+          Constructor = " ",
           Field = " ",
           Variable = "󱀍 ",
           Class = " ",
-          Interface = " ",
+          Interface = " ",
           Module = "󰕳 ",
           Property = " ",
-          Unit = " ",
+          Unit = " ",
           Value = " ",
-          Enum = " ",
+          Enum = " ",
           Keyword = " ",
-          Snippet = " ",
+          Snippet = " ",
           Color = " ",
           File = "",
           Reference = " ",
           Folder = " ",
-          EnumMember = " ",
+          EnumMember = " ",
           Constant = " ",
           Struct = " ",
-          Event = " ",
+          Event = "",
           Operator = " ",
           TypeParameter = " ",
         } 

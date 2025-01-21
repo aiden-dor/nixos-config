@@ -7,10 +7,10 @@ _: {
           text = " ";
         };
         change = {
-          text = " ";
+          text = " ";
         };
         delete = {
-          text = " ";
+          text = " ";
         };
         untracked = {
           text = "";

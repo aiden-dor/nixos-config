@@ -1,10 +1,12 @@
-{ pkgs,
-  ... }:
+{
+  pkgs,
+  ...
+}:
 {
   stylix = {
     enable = true;
 
-    # see https://github.com/tinted-theming/schemes 
+    # see https://github.com/tinted-theming/schemes
     # For more color schemes
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 

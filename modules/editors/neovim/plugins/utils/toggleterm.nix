@@ -3,12 +3,24 @@ _: {
     enable = true;
     settings = {
       size = 20;
+      direction = "float";
+      float_ops = {
+        title_pos = "center";
+      };
     };
   };
   keymaps = [
     {
       mode = "n";
       key = "<leader>t";
+      action = "<cmd>ToggleTerm<cr>";
+      options = {
+        desc = "Toggle Terminal Window";
+      };
+    }
+    {
+      mode = "n";
+      key = "<c-/>";
       action = "<cmd>ToggleTerm<cr>";
       options = {
         desc = "Toggle Terminal Window";

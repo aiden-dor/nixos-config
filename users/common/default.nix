@@ -40,6 +40,10 @@
       media = {
         music.spotify.enable = true;
       };
+
+      dev = {
+        enable = true;
+      };
     };
   };
 }

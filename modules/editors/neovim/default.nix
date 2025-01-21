@@ -1,14 +1,25 @@
-{ lib,
+{
+  lib,
   config,
-  ... }:
+  ...
+}:
 {
   options.modules.editors = {
-		neovim.enable = lib.mkEnableOption "Use the provided neovim config";
+    neovim.enable = lib.mkEnableOption "Use the provided neovim config";
   };
 
   config = lib.mkIf config.modules.editors.neovim.enable {
     programs.nixvim = {
-      imports = [ 
+      enable = true;
+      defaultEditor = true;
+
+      # set vim to use neovim
+      vimAlias = true;
+      # dont let vi alias to neovim. Useful for large file editing
+      # as neovim tends to shit itself with large >2MB files
+      viAlias = false;
+
+      imports = [
         # General Configuration
         ./settings.nix
         ./keymaps.nix
@@ -17,6 +28,7 @@
 
         # Themes
         ./plugins/themes
+
         # Completion
         ./plugins/cmp/cmp.nix
         ./plugins/cmp/cmp-copilot.nix
@@ -38,6 +50,7 @@
         ./plugins/editor/navic.nix
 
         # UI plugins
+        ./plugins/ui/snacks-bufdelete.nix
         ./plugins/ui/bufferline.nix
         ./plugins/ui/lualine.nix
         ./plugins/ui/startup.nix
@@ -48,32 +61,20 @@
         ./plugins/lsp/fidget.nix
 
         # Git
-        ./plugins/git/lazygit.nix
+        ./plugins/git/snacks-lazygit.nix
         ./plugins/git/gitsigns.nix
 
         # Utils
-        ./plugins/utils/telescope.nix
+        ./plugins/utils/snacks-picker.nix
         ./plugins/utils/whichkey.nix
         ./plugins/utils/extra_plugins.nix
         ./plugins/utils/mini.nix
         ./plugins/utils/markdown-preview.nix
-        ./plugins/utils/obsidian.nix
         ./plugins/utils/toggleterm.nix
         ./plugins/utils/web-devicons.nix
+        ./plugins/utils/persistence.nix
       ];
 
-      enable = true;
-      defaultEditor = true;
-      
-      # set vim to use neovim
-      vimAlias = true;
-      # dont let vi alias to neovim. Useful for large file editing
-      # as neovim tends to shit itself with large >2MB files
-      viAlias = false;
-
-      clipboard =  {
-        providers.wl-copy.enable = true;
-      }; 
     };
   };
 
