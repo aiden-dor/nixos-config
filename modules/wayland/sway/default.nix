@@ -23,19 +23,12 @@ in
     };
   };
 
-  imports = [
-    ./waybar.nix
-  ];
-
   config = lib.mkIf cfg.enable {
     # automatically anable wayland if using sway
     modules.wayland.enable = true;
 
     # Necessary packages that we will need
-    home.packages = with pkgs; [
-      light
-      mako
-    ];
+    # home.packages = with pkgs; [ ];
 
     wayland.windowManager.sway =
       with pkgs;
@@ -125,11 +118,9 @@ in
             # rofi: bluetooth
             "${mod}+y" = "exec ${rofi-bluetooth}/bin/rofi-bluetooth";
             # rofi: clipboard manager
-            "${mod}+c" =
-              "exec ${cliphist}/bin/cliphist list | ${rofi}/bin/rofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy";
+            # $clipboard set in extraConfigEarly
+            "${mod}+p" = "exec $clipboard";
 
-            # rofi: power menu
-            "${mod}+x" = "exec ${rofi}/bin/rofi -show menu -modi 'menu:${rofi-power-menu}/bin/rofi-power-menu'";
             # rofi: filebrowser
             "${mod}+g" = "exec ${rofi}/bin/rofi -show filebrowser";
             # rofi: emoji
@@ -141,12 +132,11 @@ in
             # Screenshot
             "${mod}+Shift+s" =
               "exec ${grim}/bin/grim -g \"$(${slurp}/bin/slurp -d)\" - | ${swappy}/bin/swappy -f -";
-            # Change screen layout
-            "${mod}+p" = "exec ${wlr-layout-ui}";
 
             # modes
             "${mod}+r" = "mode resize";
             "${mod}+u" = "mode audio";
+            "${mod}+x" = "mode session";
 
             # layout stuff
             "${mod}+b" = "splith";
@@ -253,6 +243,11 @@ in
             };
           };
         };
+
+        extraConfigEarly = ''
+          exec ${wl-clipboard}/bin/wl-paste --watch ${cliphist}/bin/cliphist store
+          set $clipboard ${cliphist}/bin/cliphist list | ${rofi}/bin/rofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy;
+        '';
       };
   };
 }

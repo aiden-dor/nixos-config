@@ -31,6 +31,7 @@
         ./plugins/snippets/luasnip.nix
 
         # Editor plugins and configurations
+        ./plugins/editor/bufdelete.nix
         ./plugins/editor/neo-tree.nix
         ./plugins/editor/treesitter.nix
         ./plugins/editor/undotree.nix

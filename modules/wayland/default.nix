@@ -10,11 +10,13 @@ let
 in
 {
   imports = [
-    ./sway
     ./hyperland
+    ./sway
+    ./cliphist.nix
+    ./mako.nix
     ./rofi.nix
     ./screenshots.nix
-    ./mako.nix
+    ./waybar.nix
   ];
 
   options.modules.wayland = {
@@ -22,7 +24,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     home.packages =
       with pkgs;
       [
@@ -39,6 +40,9 @@ in
         # Use this for on the fly editing, use kanshi to create default setups
         wlr-layout-ui
         wlr-randr # needed to configure outputs manually
+
+        # For brightness management
+        light
       ]
       ++ (lib.optional osConfig.hosts.common.sound.enable wireplumber);
   };
