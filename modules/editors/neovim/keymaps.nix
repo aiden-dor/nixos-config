@@ -3,6 +3,16 @@
 
   keymaps = [
     {
+      # This prevents us from pressing the x key and it being put into the clipboard
+      mode = "n";
+      key = "x";
+      action = ''"_x'';
+      options = {
+        silent = true;
+        noremap = true;
+      };
+    }
+    {
       mode = [
         "n"
         "x"
