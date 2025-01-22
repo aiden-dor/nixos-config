@@ -1,22 +1,31 @@
-{	pkgs,
-	... }:
 {
-	environment.systemPackages = with pkgs; [
-		# dev packages
-		vim
-		git
+  pkgs,
+  ...
+}:
+{
+  environment.systemPackages = with pkgs; [
+    # compression
+    unzip
+    zip
 
-		# filesystem management
-		tree
-		rename
-		fzf
+    # dev packages
+    vim
+    git
 
-		# downloading/web tools
-		wget
-		curl
+    # filesystem management
+    tree
+    rename
+    fzf
 
-		# system management
-		htop
-		btop
-	];
+    # downloading/web tools
+    wget
+    curl
+
+    # system monitoring
+    htop
+    btop
+
+    # System management
+    smartmontools
+  ];
 }
