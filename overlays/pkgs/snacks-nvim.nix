@@ -1,3 +1,8 @@
+# Desc:
+# Version Bump
+# Detail:
+# The version of the plugin in 24.11 doesn't have the
+# picker plugin. This version bump fixes that
 _:
 (final: prev: {
   vimPlugins = prev.vimPlugins // {

@@ -64,11 +64,17 @@ in
               window-rewrite-default = "{name}";
               window-format = "{name}";
               window-rewrite = {
-                "class<Google-chrome>" = "󰊯";
+                "class<google-chrome>" = "󰊯";
+                "class<firefox>" = "";
                 "class<discord>" = "";
                 "class<spotify>" = "󰓇";
                 "class<kitty>" = "";
-                "class<org.pwmt.zathura>" = "";
+                # sway supports regex matching. (pretty neat)
+                "class<.*zathura.*>" = "";
+                "class<.*sioyek.*>" = "";
+                "class<.*prismlauncher.*>" = "";
+                # TODO fix this shit
+                # "[Mm]inecraft.*" = "󰍳";
               };
               sort-by-number = true;
             };
