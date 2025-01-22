@@ -9,6 +9,11 @@ let
   cfg = config.modules.wayland.sway;
 in
 {
+  imports = [
+    ./swayidle.nix
+    ./swaylock.nix
+  ];
+
   options.modules.wayland.sway = {
     enable = lib.mkEnableOption "Enable the sway window manager";
     terminal = lib.mkOption {
@@ -238,7 +243,7 @@ in
               "p" = "exec ${systemd}/bin/systemctl poweroff, mode default";
               "r" = "exec ${systemd}/bin/systemctl reboot, mode default";
               "s" = "exec ${systemd}/bin/systemctl suspend, mode default";
-              "l" = "exec ${swaylock}/bin/swaylock, mode default";
+              "l" = "exec ${swaylock-effects}/bin/swaylock --daemonize, mode default";
               "o" = "exec ${sway}/bin/swaymsg exit, mode default";
             };
           };
@@ -249,5 +254,6 @@ in
           set $clipboard ${cliphist}/bin/cliphist list | ${rofi}/bin/rofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy;
         '';
       };
+
   };
 }

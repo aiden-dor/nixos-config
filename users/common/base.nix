@@ -1,18 +1,18 @@
 { ... }:
 {
-	imports = [
-		../../modules/browsers
-		../../modules/editors
-		../../modules/games
-		../../modules/shells
+  imports = [
+    ../../modules/browsers
+    ../../modules/editors
+    ../../modules/games
+    ../../modules/shells
     ../../modules/dev
     ../../modules/media
     ../../modules/social
     ../../modules/terminals
     ../../modules/wayland
-	];
+  ];
 
-	config = {
+  config = {
     modules = {
       browsers = {
         chrome.enable = true;
@@ -28,7 +28,7 @@
       };
 
       dev = {
-        enable = true;
+        tools.enable = true;
       };
     };
   };

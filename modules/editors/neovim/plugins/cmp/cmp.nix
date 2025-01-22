@@ -34,7 +34,8 @@
             option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
             keywordLength = 3;
           }
-          { name = "copilot"; }
+          # uses a lot of tokens apparently
+          # { name = "copilot"; }
           {
             name = "path"; # file system paths
             keywordLength = 3;

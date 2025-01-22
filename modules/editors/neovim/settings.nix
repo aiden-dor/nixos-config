@@ -54,8 +54,12 @@
       # Set folding method to manual
       foldmethod = "manual";
 
+      # I think this works?
+      # TODO folding
+      foldexpr = "nvim_treesitter#foldexpr()";
+
       # Disable folding by default
-      foldenable = false;
+      foldenable = true;
 
       # Wrap long lines at a character in 'breakat'
       linebreak = true;
