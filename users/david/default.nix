@@ -1,14 +1,20 @@
-{	... }:
+{ ... }:
 {
-	imports = [ 
-		../common
+  imports = [
+    ../common
     ./secrets
-	];
+  ];
 
-	home.username = "david";
-	home.homeDirectory = "/home/david";
+  modules = {
+    dev.languages = {
+      kotlin.enable = true;
+    };
+  };
+
+  home.username = "david";
+  home.homeDirectory = "/home/david";
 
   programs.home-manager.enable = true;
 
-	home.stateVersion = "24.11"; # Current version of NixOS
+  home.stateVersion = "24.11"; # Current version of NixOS
 }

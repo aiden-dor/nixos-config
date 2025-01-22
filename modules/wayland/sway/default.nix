@@ -9,6 +9,11 @@ let
   cfg = config.modules.wayland.sway;
 in
 {
+  imports = [
+    ./swayidle.nix
+    ./swaylock.nix
+  ];
+
   options.modules.wayland.sway = {
     enable = lib.mkEnableOption "Enable the sway window manager";
     terminal = lib.mkOption {
@@ -238,7 +243,7 @@ in
               "p" = "exec ${systemd}/bin/systemctl poweroff, mode default";
               "r" = "exec ${systemd}/bin/systemctl reboot, mode default";
               "s" = "exec ${systemd}/bin/systemctl suspend, mode default";
-              "l" = "exec ${swaylock}/bin/swaylock, mode default";
+              "l" = "exec ${swaylock-effects}/bin/swaylock --daemonize, mode default";
               "o" = "exec ${sway}/bin/swaymsg exit, mode default";
             };
           };
@@ -250,35 +255,5 @@ in
         '';
       };
 
-    services = {
-      swayidle = {
-        enable = true;
-        timeouts = [
-          {
-            timeout = 180;
-            command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-          }
-          {
-            timeout = 185;
-            command = "${pkgs.swaylock-effects}/bin/swaylock";
-          }
-          {
-            timeout = 190;
-            command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-            resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
-          }
-          {
-            timeout = 195;
-            command = "${pkgs.systemd}/bin/systemctl suspend";
-          }
-        ];
-        events = [
-          {
-            event = "before-sleep";
-            command = "${pkgs.swaylock-effects}/bin/swaylock";
-          }
-        ];
-      };
-    };
   };
 }

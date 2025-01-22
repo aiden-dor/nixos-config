@@ -1,11 +1,11 @@
 { ... }:
 {
-	imports = [
+  imports = [
     ./base.nix
     ./style.nix
-	];
+  ];
 
-	config = {
+  config = {
     modules = {
       browsers = {
         chrome.enable = true;
@@ -36,13 +36,16 @@
       social = {
         discord.enable = true;
       };
-      
+
       media = {
         music.spotify.enable = true;
       };
 
       dev = {
-        enable = true;
+        tools.enable = true;
+        languages = {
+          latex.enable = true;
+        };
       };
     };
   };

@@ -64,10 +64,11 @@ in
               window-rewrite-default = "{name}";
               window-format = "{name}";
               window-rewrite = {
-                "class<Google-chrome>" = "";
+                "class<Google-chrome>" = "󰊯";
                 "class<discord>" = "";
-                "class<spotify>" = "";
-                "class<kitty>" = "";
+                "class<spotify>" = "󰓇";
+                "class<kitty>" = "";
+                "class<org.pwmt.zathura>" = "";
               };
               sort-by-number = true;
             };
@@ -181,7 +182,10 @@ in
 
             temperature = {
               format = "{icon}{temperatureC}°C";
-              critical-threshold = 100;
+              critical-threshold = 80;
+              # Thermal zone 0 on the framework-13 is BS (only displays 20)
+              # if this is different on different machines idk
+              thermal-zone = 1;
               format-icons = [
                 ""
                 ""
