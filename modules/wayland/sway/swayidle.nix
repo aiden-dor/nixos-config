@@ -15,8 +15,8 @@ in
         timeouts = [
           {
             timeout = 60;
-            command = "${pkgs.light}/bin/light -O; ${pkgs.light}/bin/light -T 0.5;";
-            resumeCommand = "${pkgs.light}/bin/light -I;";
+            command = "${pkgs.light}/bin/light -O && ${pkgs.light}/bin/light -T 0.3";
+            resumeCommand = "${pkgs.light}/bin/light -I";
           }
           {
             timeout = 240;

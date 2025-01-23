@@ -68,7 +68,8 @@ in
             "type:touchpad" = {
               #dwt = disable while typing
               dwt = "enabled";
-              tap = "enabled";
+              # I find this annoying. Its just a preference though
+              tap = "disable";
               natural_scroll = "enabled";
               middle_emulation = "enabled";
             };
@@ -131,7 +132,7 @@ in
             # rofi: emoji
             "${mod}+m" = "exec ${rofimoji}/bin/rofimoji";
             # bpick color
-            "${mod}+n" = "exec ${wl-color-picker}/bin/wl-color-picker clipboard";
+            "${mod}+n" = "exec $networkmanager";
             # mirror screen
             "${mod}+o" = "exec ${wl-mirror}/bin/wl-present mirror";
             # Screenshot
@@ -251,6 +252,7 @@ in
 
         extraConfigEarly = ''
           exec ${wl-clipboard}/bin/wl-paste --watch ${cliphist}/bin/cliphist store
+          set $networkmanager ${config.modules.terminals.default} -e nmtui;
           set $clipboard ${cliphist}/bin/cliphist list | ${rofi}/bin/rofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy;
         '';
       };
