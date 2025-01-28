@@ -51,15 +51,14 @@ in
               orientation = "inherit";
               modules = (rightWrap [ "pulseaudio" ]);
             };
+
+            "group/group-idle-inhibitor" = {
+              orientation = "inherit";
+              modules = (endRightWrap [ "idle_inhibitor" ]);
+            };
+
             modules-left =
-              if cfg.sway.enable then
-                (endLeftWrap [
-                  "sway/mode"
-                  "sway/workspaces"
-                ])
-                ++ (leftWrap [ ])
-              else
-                [ ];
+              if cfg.sway.enable then (endLeftWrap [ "sway/workspaces" ]) ++ (leftWrap [ "sway/mode" ]) else [ ];
 
             modules-center =
               (rightWrap [ "tray" ])
@@ -75,7 +74,8 @@ in
               [ "group/group-network" ]
               ++ [ "group/group-audio" ]
               ++ (rightWrap [ "backlight" ])
-              ++ (endRightWrap [ "battery" ]);
+              ++ (rightWrap [ "battery" ])
+              ++ [ "group/group-idle-inhibitor" ];
 
             # Sway specific
             "sway/workspaces" = {
@@ -166,6 +166,15 @@ in
             disk = {
               format = "󰋊 {free}";
               tooltip-format = "used {used} total {total}";
+            };
+
+            idle_inhibitor = {
+              format = "{icon}";
+              format-icons = {
+                activated = [ " " ];
+                deactivated = [ " " ];
+              };
+              tooltip-format = "idle inhibitor";
             };
 
             network = {
@@ -302,6 +311,7 @@ in
           #pulseaudio,
           #tray,
           #temperature,
+          #idle_inhibitor,
           #workspaces button {
             background: @background-select;
             padding-left: 4pt;
@@ -325,10 +335,10 @@ in
           #group-clipboard:hover > * > *,
           #group-network:hover > * > *,
           #group-audio:hover > * > *,
+          #group-idle-inhibitor:hover > * > *,
           #workspaces button:hover {
             background: @background-alt;
           }
-
 
           /* Warning */
           #battery.warning,
@@ -341,6 +351,7 @@ in
           /* Critical */
           #battery.critical,
           #cpu.critical,
+          #idle_inhibitor.activated,
           #temperature.critical {
             color: @error;
           }
@@ -355,10 +366,14 @@ in
             padding-right: 8pt;
             border-left: 2pt solid @background-select;
             border-right: 2pt solid @background-select;
+            /* declare twice because css confuses me at times */
+            transition: all 0.5s ease, color 0.01s linear;
           }
 
           #workspaces button.focused {
             color: @selected;
+            /* declare twice because css confuses me at times */
+            transition: all 0.5s ease, color 0.01s linear;
           }
 
           /* Custom arrow */
