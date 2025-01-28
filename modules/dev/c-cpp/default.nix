@@ -22,7 +22,9 @@ in
       valgrind
 
       # compilers
-      gcc
+      # Conflict issue for 'c++' between gcc and clang
+      # use gcc's binary in this conflict
+      (lib.hiPrio gcc)
       clang
     ];
   };
