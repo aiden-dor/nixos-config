@@ -26,62 +26,97 @@ in
 
       settings =
         let
-          endLeftWrap = name: name ++ [ "custom/right-arrow-dark" ];
-          endRightWrap = name: [ "custom/left-arrow-dark" ] ++ name;
-          leftWrap = name: [ "custom/right-arrow-light" ] ++ name ++ [ "custom/right-arrow-dark" ];
-          rightWrap = name: [ "custom/left-arrow-dark" ] ++ name ++ [ "custom/left-arrow-light" ];
-          centerWrap = name: [ "custom/left-arrow-dark" ] ++ name ++ [ "custom/right-arrow-dark" ];
+          endLeftWrap = name: name ++ [ "custom/r-arr-c" ];
+          endRightWrap = name: [ "custom/l-arr-c" ] ++ name;
+          leftWrap = name: [ "custom/r-arr-o" ] ++ name ++ [ "custom/r-arr-c" ];
+          rightWrap = name: [ "custom/l-arr-c" ] ++ name ++ [ "custom/l-arr-o" ];
+          centerWrap = name: [ "custom/l-arr-c" ] ++ name ++ [ "custom/r-arr-c" ];
         in
         [
           {
             layer = "top";
             position = "top";
 
+            "group/group-network" = {
+              orientation = "inherit";
+              modules = (rightWrap [ "network" ]);
+            };
+
+            "group/group-clipboard" = {
+              orientation = "inherit";
+              modules = (leftWrap [ "custom/clipboard" ]);
+            };
+
+            "group/group-audio" = {
+              orientation = "inherit";
+              modules = (rightWrap [ "pulseaudio" ]);
+            };
+
+            "group/group-idle-inhibitor" = {
+              orientation = "inherit";
+              modules = (endRightWrap [ "idle_inhibitor" ]);
+            };
+
             modules-left =
               if cfg.sway.enable then (endLeftWrap [ "sway/workspaces" ]) ++ (leftWrap [ "sway/mode" ]) else [ ];
+
             modules-center =
               (rightWrap [ "tray" ])
-              ++ (centerWrap [ "clock" ])
-              ++ (leftWrap [ "custom/clipboard" ])
+              ++ (rightWrap [ "clock#2" ])
+              ++ (centerWrap [ "clock#1" ])
+              ++ [ "group/group-clipboard" ]
               ++ (leftWrap [
                 "temperature"
                 "cpu"
               ]);
 
             modules-right =
-              (rightWrap [ "network" ])
-              ++ (rightWrap [ "pulseaudio" ])
+              [ "group/group-network" ]
+              ++ [ "group/group-audio" ]
               ++ (rightWrap [ "backlight" ])
-              ++ (endRightWrap [ "battery" ]);
+              ++ (rightWrap [ "battery" ])
+              ++ [ "group/group-idle-inhibitor" ];
 
             # Sway specific
             "sway/workspaces" = {
               disable-scroll = true;
               all-outputs = true;
               on-click = "activate";
-              format = "<span>{name}</span> {windows}";
-              format-windows-separator = " | ";
+              format = "{name} {windows}";
+              disable-markup = true;
               window-rewrite-default = "{name}";
               window-format = "{name}";
               window-rewrite = {
-                "class<Google-chrome>" = "󰊯";
+                "class<google-chrome>" = "󰊯";
+                "class<firefox>" = "";
                 "class<discord>" = "";
                 "class<spotify>" = "󰓇";
                 "class<kitty>" = "";
-                "class<org.pwmt.zathura>" = "";
+                # sway supports regex matching. (pretty neat)
+                "class<.*zathura.*>" = "";
+                "class<.*sioyek.*>" = "";
+                "class<.*prismlauncher.*>" = "";
+                # TODO fix this shit
+                # "[Mm]inecraft.*" = "󰍳";
               };
               sort-by-number = true;
             };
 
             "sway/mode" = {
+              hide-empty-text = true;
               format = "{}";
               tooltip = false;
             };
 
             # General
-            clock = {
+            "clock#1" = {
               format = "{:%H:%M}";
-              tooltip-format = "{:%m-%d-%y}";
+              tooltip = false;
+            };
+
+            "clock#2" = {
+              format = "{:%m-%d-%y}";
+              tooltip = false;
             };
 
             backlight = {
@@ -94,7 +129,7 @@ in
                 "󱩕"
                 "󰛨"
               ];
-              tooltip-format = "{percent}%";
+              tooltip = false;
             };
 
             battery = {
@@ -133,6 +168,15 @@ in
               tooltip-format = "used {used} total {total}";
             };
 
+            idle_inhibitor = {
+              format = "{icon}";
+              format-icons = {
+                activated = [ " " ];
+                deactivated = [ " " ];
+              };
+              tooltip-format = "idle inhibitor";
+            };
+
             network = {
               format = "{ifname}";
               format-wifi = "{icon} {essid}";
@@ -149,7 +193,7 @@ in
                 ethernet = [ "󰈁" ];
                 disconnected = [ "" ];
               };
-              on-click = "${config.modules.terminals.default} -e nmtui";
+              on-click = "swaymsg -q exec '$networkmanager'";
               tooltip-format = "{ipaddr}/{cidr}";
             };
 
@@ -203,19 +247,19 @@ in
               tooltip = false;
             };
 
-            "custom/left-arrow-dark" = {
+            "custom/l-arr-c" = {
+              format = "";
+              tooltip = false;
+            };
+            "custom/l-arr-o" = {
               format = "";
               tooltip = false;
             };
-            "custom/left-arrow-light" = {
-              format = "";
+            "custom/r-arr-c" = {
+              format = "";
               tooltip = false;
             };
-            "custom/right-arrow-dark" = {
-              format = "";
-              tooltip = false;
-            };
-            "custom/right-arrow-light" = {
+            "custom/r-arr-o" = {
               format = "";
               tooltip = false;
             };
@@ -246,6 +290,7 @@ in
             /* Custom styling */
             font-family: "${fonts.monospace.name}";
             font-size: ${builtins.toString fonts.sizes.desktop}pt;
+            transition: all 0.5s ease;
           }
 
           window#waybar {
@@ -266,43 +311,78 @@ in
           #pulseaudio,
           #tray,
           #temperature,
-          #workspaces button,
-          #workspaces {
+          #idle_inhibitor,
+          #workspaces button {
+            background: @background-select;
+            padding-left: 4pt;
+            padding-right: 4pt;
+          }
+
+          /* HOVERS */
+          /* tooltipable */
+
+          #backlight:hover,
+          #battery:hover,
+          #network:hover,
+          #pulseaudio:hover
+          #custom-clipboard:hover,
+          #cpu:hover,
+          #workspaces button:hover {
+            text-shadow: 2px 2px 2px @text-color-alt;
+          }
+
+          /* clickable */
+          #group-clipboard:hover > * > *,
+          #group-network:hover > * > *,
+          #group-audio:hover > * > *,
+          #group-idle-inhibitor:hover > * > *,
+          #workspaces button:hover {
             background: @background-alt;
-            padding-left: 8pt;
-            padding-right: 8pt;
           }
 
           /* Warning */
           #battery.warning,
-          #cpu.warning {
+          #cpu.warning,
+          #workspaces button.urgent, 
+          #mode {
             color: @urgent;
           }
 
           /* Critical */
           #battery.critical,
           #cpu.critical,
+          #idle_inhibitor.activated,
           #temperature.critical {
             color: @error;
           }
 
-          /* sway mode i.e(resize audio) */
-          #mode {
-            color: @urgent;
-          }   
-
           /* Workspace stuff*/
+          #workspaces { 
+            padding: 0 0pt;
+          }
+
+          #workspaces button {
+            padding-left: 4pt;
+            padding-right: 8pt;
+            border-left: 2pt solid @background-select;
+            border-right: 2pt solid @background-select;
+            /* declare twice because css confuses me at times */
+            transition: all 0.5s ease, color 0.01s linear;
+          }
+
           #workspaces button.focused {
             color: @selected;
+            /* declare twice because css confuses me at times */
+            transition: all 0.5s ease, color 0.01s linear;
           }
 
           /* Custom arrow */
-          #custom-right-arrow-dark, #custom-left-arrow-dark {
-            color: @background-alt;
-          }
-          #custom-right-arrow-light, #custom-left-arrow-light {
+          #custom-r-arr-c,
+          #custom-l-arr-c,
+          #custom-r-arr-o,
+          #custom-l-arr-o  {
             color: @background;
-            background: @background-alt;
+            background: @background-select;
           }
         '';
     };

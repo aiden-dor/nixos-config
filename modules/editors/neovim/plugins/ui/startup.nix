@@ -38,17 +38,17 @@
         content = [
           [
             " Find File"
-            "Telescope find_files"
+            ''lua Snacks.picker.files()''
             "ff"
           ]
           [
             " Find Word"
-            "Telescope live_grep"
+            ''lua Snacks.picker.grep()''
             "fr"
           ]
           [
             " File Browser"
-            "Telescope file_browser"
+            "Neotree position=float"
             "fe"
           ]
           [

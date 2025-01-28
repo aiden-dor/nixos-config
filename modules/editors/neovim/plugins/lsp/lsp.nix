@@ -1,4 +1,11 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
+let
+  cfg = config.languages;
+in
 {
   plugins = {
     lsp-lines = {
@@ -14,6 +21,13 @@
       enable = true;
       inlayHints = true;
       servers = {
+        clangd = {
+          enable = cfg.c-cpp.enable;
+          cmd = [
+            "clangd"
+            "--clang-tidy"
+          ];
+        };
         html = {
           enable = true;
         };
@@ -27,19 +41,19 @@
           enable = true;
         };
         kotlin_language_server = {
-          enable = true;
+          enable = cfg.kotlin.enable;
         };
         marksman = {
           enable = true;
         };
         pyright = {
-          enable = true;
+          enable = cfg.python.enable;
         };
         gopls = {
           enable = true;
         };
         texlab = {
-          enable = true;
+          enable = cfg.latex.enable;
         };
         # bloat
         jsonls = {

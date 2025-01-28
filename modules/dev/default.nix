@@ -8,10 +8,11 @@ let
   cfg = config.modules.dev.tools;
 in
 {
-
   imports = [
-    ./Latex
-    ./Kotlin
+    ./c-cpp
+    ./latex
+    ./kotlin
+    ./python
   ];
 
   options.modules.dev.tools = {

@@ -17,6 +17,8 @@
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.home-manager.follows = "home-manager";
+
+    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
   outputs =
@@ -39,7 +41,10 @@
     in
     {
       nixosConfigurations = {
-        DavidFramework = mkSystem [ ./hosts/framework ];
+        DavidFramework = mkSystem [
+          ./hosts/framework
+          inputs.minegrub-theme.nixosModules.default
+        ];
       };
     };
 

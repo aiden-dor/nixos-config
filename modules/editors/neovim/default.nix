@@ -1,15 +1,29 @@
 {
   lib,
   config,
+  options,
   ...
 }:
+let
+  cfg = config.modules.editors.neovim;
+in
 {
-  options.modules.editors = {
-    neovim.enable = lib.mkEnableOption "Use the provided neovim config";
+  options = {
+    modules.editors = {
+      neovim.enable = lib.mkEnableOption "Use the provided neovim config";
+    };
+
+    # Pass through what languages we have enabled to the nix configuration
+    programs.nixvim.languages = options.modules.dev.languages;
   };
 
-  config = lib.mkIf config.modules.editors.neovim.enable {
+  config = lib.mkIf cfg.enable {
+    stylix.targets.nixvim.enable = false;
+
     programs.nixvim = {
+      # Pass through what languages we have enabled to the nix configuration
+      languages = config.modules.dev.languages;
+
       enable = true;
       defaultEditor = true;
 

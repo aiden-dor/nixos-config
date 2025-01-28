@@ -8,6 +8,8 @@
   modules = {
     dev.languages = {
       kotlin.enable = true;
+      latex.enable = true;
+      c-cpp.enable = true;
     };
   };
 
