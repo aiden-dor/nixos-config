@@ -14,8 +14,11 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      # Latex
+      # build system
       gradle
+
+      # compiler and what-not
+      kotlin
     ];
   };
 

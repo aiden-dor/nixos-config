@@ -44,7 +44,7 @@
       dev = {
         tools.enable = true;
         languages = {
-          latex.enable = true;
+          python.enable = true;
         };
       };
     };

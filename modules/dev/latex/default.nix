@@ -16,6 +16,9 @@ in
     home.packages = with pkgs; [
       # Latex
       texliveFull
+
+      # pdf viewer
+      zathura
     ];
   };
 

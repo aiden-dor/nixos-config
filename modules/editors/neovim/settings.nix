@@ -51,8 +51,8 @@
       # Enable mouse support
       mouse = "a";
 
-      # Set folding method to manual
-      foldmethod = "manual";
+      # Set folding method to expression
+      foldmethod = "expr";
 
       # I think this works?
       # TODO folding
