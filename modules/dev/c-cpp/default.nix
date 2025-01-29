@@ -20,6 +20,8 @@ in
       # tools
       clang-tools
       valgrind
+      cppcheck
+      codespell
 
       # compilers
       # Conflict issue for 'c++' between gcc and clang
