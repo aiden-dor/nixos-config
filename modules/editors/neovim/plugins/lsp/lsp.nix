@@ -109,6 +109,10 @@ in
             action = "workspace_symbol";
             desc = "Workspace Symbol";
           };
+          "<leader>cf" = {
+            action = "code_action";
+            desc = " Quick fix";
+          };
           "<leader>cr" = {
             action = "rename";
             desc = "Rename";
@@ -131,10 +135,6 @@ in
       };
     };
   };
-
-  extraPlugins = with pkgs.vimPlugins; [
-    ansible-vim
-  ];
 
   extraConfigLua = ''
     local _border = "rounded"

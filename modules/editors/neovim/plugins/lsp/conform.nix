@@ -181,7 +181,7 @@ in
           }
           (lib.mkIf cfg.c-cpp.enable {
             clang-format = {
-              command = "${pkgs.clang-tools}/bin/";
+              command = "${pkgs.clang-tools}/bin/clang-format";
             };
 
             cmake-format = {
