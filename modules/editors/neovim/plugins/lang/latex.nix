@@ -17,11 +17,17 @@ in
 
       settings = {
         view_method = "zathura";
+        imaps_enable = 0;
       };
+    };
+
+    plugins.treesitter.settings = {
+      highlight.disable = [ "latex" ];
     };
 
     # taken from https://github.com/lervag/vimtex/wiki/which%E2%80%90key.nvim-support
     extraFiles."ftplugin/tex.lua".text = ''
+      vim.opt_local.conceallevel = 2
       local wk = require("which-key")
       wk.add({
         buffer = vim.api.nvim_get_current_buf(),
