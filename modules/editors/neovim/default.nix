@@ -15,6 +15,11 @@ in
 
     # Pass through what languages we have enabled to the nix configuration
     programs.nixvim.languages = options.modules.dev.languages;
+    programs.nixvim.config-directory = lib.mkOption {
+      type = lib.types.str;
+      default = "${config.home.homeDirectory}/.config/nvim";
+      description = "dirty hack to pass through the config directory in our plugin files. This is so we can edit config files without nixos when rapidly iterating";
+    };
   };
 
   config = lib.mkIf cfg.enable {
