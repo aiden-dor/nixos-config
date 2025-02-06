@@ -93,9 +93,9 @@ in
                 "class<spotify>" = "󰓇";
                 "class<kitty>" = "";
                 # sway supports regex matching. (pretty neat)
-                "class<.*zathura.*>" = "";
-                "class<.*sioyek.*>" = "";
-                "class<.*prismlauncher.*>" = "";
+                "class<org.pwmt.zathura>" = "";
+                "class<sioyek>" = "";
+                "class<org.prismlauncher.PrismLauncher>" = "";
                 # TODO fix this shit
                 # "[Mm]inecraft.*" = "󰍳";
               };

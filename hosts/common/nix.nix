@@ -1,15 +1,16 @@
 {
-	# Desired Nix behaviors
-	nix = {
-		gc = { # Garbage Collection
-			automatic = true;
-			dates = "weekly";
-			options = "--delete-older-than 7d";
-		};
+  # Desired Nix behaviors
+  nix = {
+    gc = {
+      # Garbage Collection
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 31d";
+    };
 
-		settings = {
-			experimental-features = "nix-command flakes"; # Useful features
-			# More can go in here later as we learn.
-		};
-	};
+    settings = {
+      experimental-features = "nix-command flakes"; # Useful features
+      # More can go in here later as we learn.
+    };
+  };
 }

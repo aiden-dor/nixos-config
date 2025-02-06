@@ -1,4 +1,9 @@
 {
+  lib,
+  pkgs,
+  ...
+}:
+{
   config = {
     extraConfigLuaPre =
       # lua
@@ -14,6 +19,9 @@
     };
 
     opts = {
+      # set the shell
+      shell = "${lib.getExe pkgs.zsh}";
+
       # Show line numbers
       number = true;
 

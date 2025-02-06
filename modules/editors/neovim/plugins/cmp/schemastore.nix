@@ -3,7 +3,7 @@
   # specific LSPs
   # for YAML and JSON files
   plugins.schemastore = {
-    enable = true;
+    enable = false;
 
     json = {
       enable = true;

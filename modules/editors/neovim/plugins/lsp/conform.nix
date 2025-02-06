@@ -82,7 +82,7 @@ in
           end
         '';
         notify_on_error = true;
-        formatters_by_ft =
+        formatters_by_ft = lib.mkMerge [
           {
             html = {
               __unkeyed-1 = "prettierd";
@@ -126,24 +126,27 @@ in
             ];
             "_" = [ "trim_whitespace" ];
           }
-          // lib.mkIf cfg.c-cpp.enable {
+
+          (lib.mkIf cfg.c-cpp.enable {
             c = [ "clang-format" ];
             cpp = [ "clang-format" ];
-          }
-          // lib.mkIf cfg.kotlin.enable {
+            cmake = [ "cmake-format" ];
+          })
+          (lib.mkIf cfg.kotlin.enable {
             kotlin = [ "ktlint" ];
-          }
-          // lib.mkIf cfg.python.enable {
+          })
+          (lib.mkIf cfg.python.enable {
             python = [
               "black"
               "isort"
             ];
-          }
-          // lib.mkIf cfg.latex.enable {
+          })
+          (lib.mkIf cfg.latex.enable {
             tex = [ "tex-fmt" ];
-          };
+          })
+        ];
 
-        formatters =
+        formatters = lib.mkMerge [
           {
             nixfmt-rfc-style = {
               command = "${lib.getExe pkgs.nixfmt-rfc-style}";
@@ -176,29 +179,34 @@ in
             #  command = "${lib.getExe pkgs.yamlfmt}";
             #};
           }
-          // lib.mkIf cfg.c-cpp.enable {
+          (lib.mkIf cfg.c-cpp.enable {
             clang-format = {
-              command = "${pkgs.clang-tools}/bin/";
+              command = "${pkgs.clang-tools}/bin/clang-format";
             };
-          }
-          // lib.mkIf cfg.python.enable {
+
+            cmake-format = {
+              command = "${lib.getExe pkgs.cmake-format}";
+            };
+          })
+          (lib.mkIf cfg.python.enable {
             black = {
               command = "${lib.getExe pkgs.black}";
             };
             isort = {
               command = "${lib.getExe pkgs.isort}";
             };
-          }
-          // lib.mkIf cfg.kotlin.enable {
+          })
+          (lib.mkIf cfg.kotlin.enable {
             ktlint = {
               command = "${lib.getExe pkgs.ktlint}";
             };
-          }
-          // lib.mkIf cfg.latex.enable {
+          })
+          (lib.mkIf cfg.latex.enable {
             tex-fmt = {
               command = "${lib.getExe pkgs.tex-fmt}";
             };
-          };
+          })
+        ];
       };
     };
   };

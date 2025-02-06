@@ -23,6 +23,9 @@ in
     home.packages = with pkgs; [
       # tools
       lazygit
+
+      # cat with syntax highlighting
+      bat
     ];
   };
 }

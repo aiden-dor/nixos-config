@@ -90,6 +90,7 @@ in
 
         # Language specific
         ./plugins/lang/latex.nix
+        ./plugins/lang/markdown.nix
       ];
     };
   };

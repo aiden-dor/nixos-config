@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }:
@@ -20,69 +21,62 @@ in
     lsp = {
       enable = true;
       inlayHints = true;
-      servers = {
-        clangd = {
-          enable = cfg.c-cpp.enable;
-          cmd = [
-            "clangd"
-            "--clang-tidy"
-          ];
-        };
-        html = {
-          enable = true;
-        };
-        lua_ls = {
-          enable = true;
-        };
-        nil_ls = {
-          enable = true;
-        };
-        ts_ls = {
-          enable = true;
-        };
-        kotlin_language_server = {
-          enable = cfg.kotlin.enable;
-        };
-        marksman = {
-          enable = true;
-        };
-        pyright = {
-          enable = cfg.python.enable;
-        };
-        gopls = {
-          enable = true;
-        };
-        texlab = {
-          enable = cfg.latex.enable;
-        };
-        # bloat
-        jsonls = {
-          enable = true;
-        };
-        yamlls = {
-          enable = true;
-          # extraOptions = {
-          #   settings = {
-          #     yaml = {
-          #       schemas = {
-          #         kubernetes = "'*.yaml";
-          #         "http://json.schemastore.org/github-workflow" = ".github/workflows/*";
-          #         "http://json.schemastore.org/github-action" = ".github/action.{yml,yaml}";
-          #         "http://json.schemastore.org/ansible-stable-2.9" = "roles/tasks/*.{yml,yaml}";
-          #         "http://json.schemastore.org/kustomization" = "kustomization.{yml,yaml}";
-          #         "http://json.schemastore.org/ansible-playbook" = "*play*.{yml,yaml}";
-          #         "http://json.schemastore.org/chart" = "Chart.{yml,yaml}";
-          #         "https://json.schemastore.org/dependabot-v2" = ".github/dependabot.{yml,yaml}";
-          #         "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" =
-          #           "*docker-compose*.{yml,yaml}";
-          #         "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" =
-          #           "*flow*.{yml,yaml}";
-          #       };
-          #     };
-          #   };
-          # };
-        };
-      };
+      servers = lib.mkMerge [
+        {
+          html = {
+            enable = true;
+          };
+          lua_ls = {
+            enable = true;
+          };
+          nil_ls = {
+            enable = true;
+          };
+          ts_ls = {
+            enable = true;
+          };
+          marksman = {
+            enable = true;
+          };
+          gopls = {
+            enable = true;
+          };
+          # bloat
+          jsonls = {
+            enable = true;
+          };
+          yamlls = {
+            enable = true;
+          };
+        }
+        (lib.mkIf cfg.c-cpp.enable {
+          clangd = {
+            enable = cfg.c-cpp.enable;
+            cmd = [
+              "clangd"
+              "--clang-tidy"
+            ];
+          };
+          cmake = {
+            enable = true;
+          };
+        })
+        (lib.mkIf cfg.kotlin.enable {
+          kotlin_language_server = {
+            enable = cfg.kotlin.enable;
+          };
+        })
+        (lib.mkIf cfg.python.enable {
+          pyright = {
+            enable = cfg.python.enable;
+          };
+        })
+        (lib.mkIf cfg.python.enable {
+          texlab = {
+            enable = cfg.latex.enable;
+          };
+        })
+      ];
 
       keymaps = {
         silent = true;
@@ -115,6 +109,10 @@ in
             action = "workspace_symbol";
             desc = "Workspace Symbol";
           };
+          "<leader>cf" = {
+            action = "code_action";
+            desc = " Quick fix";
+          };
           "<leader>cr" = {
             action = "rename";
             desc = "Rename";
@@ -137,9 +135,6 @@ in
       };
     };
   };
-  extraPlugins = with pkgs.vimPlugins; [
-    ansible-vim
-  ];
 
   extraConfigLua = ''
     local _border = "rounded"
