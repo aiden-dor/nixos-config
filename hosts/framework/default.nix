@@ -1,13 +1,12 @@
-{	pkgs,
-	... }: 
+{ ... }:
 {
-	imports = [
-		../common # Common goes first, its options my be overridden by later imports.
-		./hardware-configuration.nix
-		./users.nix
-	];
+  imports = [
+    ../common # Common goes first, its options my be overridden by later imports.
+    ./hardware-configuration.nix
+    ./users.nix
+  ];
 
-	hosts.common = {
+  hosts.common = {
     bluetooth.enable = true;
     firewall.spotifyLocalDiscovery.enable = true;
     fprintd.enable = true;
@@ -16,7 +15,7 @@
     sound.enable = true;
   };
 
-	networking.hostName = "DavidFramework";
+  networking.hostName = "DavidFramework";
 
-	time.timeZone = "America/Denver";
+  time.timeZone = "America/Denver";
 }

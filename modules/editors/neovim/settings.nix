@@ -72,8 +72,8 @@
       # Wrap long lines at a character in 'breakat'
       linebreak = true;
 
-      # Disable spell checking
-      spell = false;
+      # Enable spell checking
+      spell = true;
 
       # Disable swap file creation
       swapfile = false;

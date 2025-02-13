@@ -15,27 +15,27 @@ in
         timeouts = [
           {
             timeout = 60;
-            command = "${pkgs.light}/bin/light -O && ${pkgs.light}/bin/light -T 0.3";
-            resumeCommand = "${pkgs.light}/bin/light -I";
+            command = "${lib.getExe pkgs.light} -O && ${lib.getExe pkgs.light} -T 0.3";
+            resumeCommand = "${lib.getExe pkgs.light} -I";
           }
           {
             timeout = 240;
-            command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-            resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+            command = "${lib.getExe pkgs.sway} 'output * dpms off'";
+            resumeCommand = "${lib.getExe pkgs.sway} 'output * dpms on'";
           }
           {
             timeout = 260;
-            command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+            command = "${lib.getExe pkgs.swaylock-effects} --daemonize";
           }
           {
-            timeout = 290;
+            timeout = 270;
             command = "${pkgs.systemd}/bin/systemctl suspend";
           }
         ];
         events = [
           {
             event = "before-sleep";
-            command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+            command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize --grace 0";
           }
         ];
       };

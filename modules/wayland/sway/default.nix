@@ -244,7 +244,7 @@ in
               "p" = "exec ${systemd}/bin/systemctl poweroff, mode default";
               "r" = "exec ${systemd}/bin/systemctl reboot, mode default";
               "s" = "exec ${systemd}/bin/systemctl suspend, mode default";
-              "l" = "exec ${swaylock-effects}/bin/swaylock --daemonize, mode default";
+              "l" = "exec ${lib.getExe swaylock-effects} --daemonize --grace 0, mode default";
               "o" = "exec ${sway}/bin/swaymsg exit, mode default";
             };
           };

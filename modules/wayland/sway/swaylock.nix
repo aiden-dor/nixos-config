@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -11,13 +12,14 @@ in
     # Config shamelessly stolen
     programs.swaylock = {
       enable = true;
+      package = pkgs.swaylock-effects;
       settings = {
         "screenshots" = true;
         "clock" = true;
         "indicator" = true;
+        "grace" = 5;
         "effect-blur" = "7x5";
         "fade-in" = "0.2";
-        "grace" = 5;
         "indicator-radius" = "100";
       };
     };

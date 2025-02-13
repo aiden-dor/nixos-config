@@ -342,14 +342,6 @@
       };
     }
     {
-      mode = "n";
-      key = "<leader>ui";
-      action = "vim.show_pos";
-      options = {
-        desc = "Inspect Pos";
-      };
-    }
-    {
       mode = "t";
       key = "<esc><esc>";
       action = "<c-\\><c-n>";
