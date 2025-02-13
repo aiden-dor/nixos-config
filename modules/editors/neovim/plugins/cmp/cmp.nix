@@ -61,7 +61,6 @@
         mapping = {
           "<C-j>" = "cmp.mapping.select_next_item()";
           "<C-k>" = "cmp.mapping.select_prev_item()";
-          "<C-e>" = "cmp.mapping.abort()";
           "<C-b>" = "cmp.mapping.scroll_docs(-4)";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<C-Space>" = "cmp.mapping.complete()";
@@ -94,12 +93,12 @@
                  fallback()
                end
              end, { "i", "s" })'';
-          "<C-E>" = ''
-            cmp.mapping(function(fallback)
-              if ls.choice_active() then
-                ls.change_choice(1)
-              else
-                fallback()
+          "<C-e>" = ''
+            cmp.mapping(function(fallback) 
+              if cmp.visible() then
+                cmp.mapping.abort()
+              elseif luasnip.choice_active() then
+                luasnip.change_choice(1)
               end
             end, { "i", "s"})'';
         };
