@@ -251,7 +251,6 @@ in
         };
 
         extraConfigEarly = ''
-          exec ${wl-clipboard}/bin/wl-paste --watch ${cliphist}/bin/cliphist store
           set $networkmanager ${config.modules.terminals.default} -e nmtui;
           set $clipboard ${cliphist}/bin/cliphist list | ${rofi}/bin/rofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy;
         '';
