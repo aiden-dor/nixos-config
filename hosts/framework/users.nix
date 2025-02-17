@@ -21,6 +21,7 @@
   programs = {
     sway.enable = true;
   };
+
   # Dumb hack required to get brightness working properly
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
@@ -62,7 +63,6 @@
 
     extraSpecialArgs = {
       inherit inputs outputs;
-      nixosConfig = config;
     };
 
     users.david = import ../../users/david;
