@@ -63,10 +63,12 @@
 
     extraSpecialArgs = {
       inherit inputs outputs;
+      displayProfiles = import ./monitors.nix;
     };
 
     users.david = import ../../users/david;
     users.gorplet = import ../../users/gorplet;
     users.root = import ../../users/root;
+
   };
 }
