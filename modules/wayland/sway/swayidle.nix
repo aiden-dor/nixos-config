@@ -35,7 +35,7 @@ in
         events = [
           {
             event = "before-sleep";
-            command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize --grace 0";
+            command = "${lib.getExe pkgs.swaylock-effects} --daemonize --grace 0";
           }
         ];
       };

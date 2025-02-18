@@ -75,6 +75,9 @@
       # Enable spell checking
       spell = true;
 
+      # case insensitive search with '/'
+      ignorecase = true;
+
       # Disable swap file creation
       swapfile = false;
 

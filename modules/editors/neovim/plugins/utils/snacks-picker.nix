@@ -1,4 +1,12 @@
 {
+  pkgs,
+  ...
+}:
+{
+  extraPackages = with pkgs; [
+    fd
+  ];
+
   plugins.snacks = {
     enable = true;
     # Replacement for telescope
@@ -8,6 +16,7 @@
       enabled = true;
     };
   };
+
   keymaps = [
     {
       mode = "n";

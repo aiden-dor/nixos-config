@@ -75,6 +75,7 @@ in
           ./plugins/ui/bufferline.nix
           ./plugins/ui/lualine.nix
           ./plugins/ui/snacks-bufdelete.nix
+          ./plugins/ui/snacks-notify.nix
           ./plugins/ui/snacks-toggle.nix
           ./plugins/ui/startup.nix
 
@@ -89,6 +90,7 @@ in
 
           # Utils
           ./plugins/utils/snacks-picker.nix
+          ./plugins/utils/snacks-bigfile.nix
           ./plugins/utils/whichkey.nix
           ./plugins/utils/extra_plugins.nix
           ./plugins/utils/mini.nix
