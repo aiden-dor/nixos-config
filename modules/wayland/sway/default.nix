@@ -41,8 +41,8 @@ in
         mod = "Mod4";
         left = "h";
         right = "l";
-        up = "j";
-        down = "k";
+        up = "k";
+        down = "j";
       in
       {
 
