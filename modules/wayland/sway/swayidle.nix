@@ -15,7 +15,12 @@ in
         timeouts = [
           {
             timeout = 60;
-            command = "${lib.getExe pkgs.light} -O && ${lib.getExe pkgs.light} -T 0.3";
+            command = "${lib.getExe pkgs.light} -O && ${lib.getExe pkgs.light} -T 0.55";
+            resumeCommand = "${lib.getExe pkgs.light} -I";
+          }
+          {
+            timeout = 235;
+            command = "${lib.getExe pkgs.light} -T 0.55";
             resumeCommand = "${lib.getExe pkgs.light} -I";
           }
           {

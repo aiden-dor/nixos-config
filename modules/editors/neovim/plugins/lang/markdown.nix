@@ -26,7 +26,9 @@
     enable = true;
     settings = {
       image = {
-        enabled = true;
+        # Needs to mature a little more.
+        # it is really nice though
+        # enabled = true;
       };
     };
   };

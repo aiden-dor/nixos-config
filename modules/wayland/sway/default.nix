@@ -41,8 +41,8 @@ in
         mod = "Mod4";
         left = "h";
         right = "l";
-        up = "j";
-        down = "k";
+        up = "k";
+        down = "j";
       in
       {
 
@@ -208,14 +208,14 @@ in
             "${mod}+XF86AudioMute" = "exec ${wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 
             # player control
-            "XF86AudioPlay" = "exec ${playerctl}/bin/playerctl play-pause --player=%any,mpv,mpd";
-            "XF86AudioPrev" = "exec ${playerctl}/bin/playerctl previous --player=%any,mpv,mpd";
-            "XF86AudioNext" = "exec ${playerctl}/bin/playerctl next --player=%any,mpv,mpd";
-            "XF86AudioStop" = "exec ${playerctl}/bin/playerctl play-pause --player=%any,mpv,mpd";
+            "XF86AudioPlay" = "exec ${lib.getExe playerctl} play-pause --player=%any,mpv,mpd";
+            "XF86AudioPrev" = "exec ${lib.getExe playerctl} previous --player=%any,mpv,mpd";
+            "XF86AudioNext" = "exec ${lib.getExe playerctl} next --player=%any,mpv,mpd";
+            "XF86AudioStop" = "exec ${lib.getExe playerctl} play-pause --player=%any,mpv,mpd";
 
             # brightness
-            "XF86MonBrightnessUp" = "exec ${light}/bin/light -A 2";
-            "XF86MonBrightnessDown" = "exec ${light}/bin/light -U 2";
+            "XF86MonBrightnessUp" = "exec ${lib.getExe light} -A 2";
+            "XF86MonBrightnessDown" = "exec ${lib.getExe light} -U 2";
           };
 
           modes = {
@@ -253,6 +253,8 @@ in
         extraConfigEarly = ''
           set $networkmanager ${config.modules.terminals.default} -e nmtui;
           set $clipboard ${cliphist}/bin/cliphist list | ${rofi}/bin/rofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy;
+
+          exec ${lib.getExe light} -N 0.01 
         '';
       };
 

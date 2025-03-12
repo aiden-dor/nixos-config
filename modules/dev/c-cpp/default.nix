@@ -16,6 +16,7 @@ in
     home.packages = with pkgs; [
       # build system
       cmake
+      gnumake
 
       # tools
       clang-tools
