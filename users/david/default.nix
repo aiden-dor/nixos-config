@@ -11,6 +11,8 @@
       latex.enable = true;
       c-cpp.enable = true;
     };
+
+    media.sioyek.enable = true;
   };
 
   home.username = "david";

@@ -23,6 +23,12 @@ in
       inlayHints = true;
       servers = lib.mkMerge [
         {
+          ltex = {
+            enable = true;
+            settings = {
+              language = "en-US";
+            };
+          };
           html = {
             enable = true;
           };
