@@ -20,9 +20,12 @@ in
 
       # tools
       clang-tools
-      valgrind
       cppcheck
       codespell
+
+      # debuggers
+      valgrind
+      gdb
 
       # compilers
       # Conflict issue for 'c++' between gcc and clang
