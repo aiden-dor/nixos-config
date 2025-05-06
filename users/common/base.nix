@@ -15,7 +15,7 @@
   config = {
     modules = {
       browsers = {
-        chrome.enable = true;
+        chrome.enable = false;
         firefox.enable = true;
       };
 

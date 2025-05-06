@@ -15,8 +15,8 @@
     media.sioyek.enable = true;
   };
 
-  home.username = "david";
-  home.homeDirectory = "/home/david";
+  home.username = "djungle";
+  home.homeDirectory = "/home/djungle";
 
   programs.home-manager.enable = true;
 

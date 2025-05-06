@@ -35,25 +35,18 @@
   };
 
   users.users = {
-    david = {
+    djungle = {
       isNormalUser = true;
       extraGroups = [
         "video"
         "networkmanager"
-      ];
-    };
-    gorplet = {
-      isNormalUser = true;
-      extraGroups = [
-        "video"
-        "networkmanager"
+	"wheel"
       ];
     };
   };
 
   home-manager = {
     sharedModules = [
-      inputs.sops-nix.homeManagerModules.sops
       inputs.nixvim.homeManagerModules.nixvim
       inputs.stylix.homeManagerModules.stylix
     ];
@@ -66,8 +59,7 @@
       displayProfiles = import ./monitors.nix;
     };
 
-    users.david = import ../../users/david;
-    users.gorplet = import ../../users/gorplet;
+    users.djungle= import ../../users/djungle;
     users.root = import ../../users/root;
 
   };

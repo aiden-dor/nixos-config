@@ -15,7 +15,7 @@
     sound.enable = true;
   };
 
-  networking.hostName = "DavidFramework";
+  networking.hostName = "skog";
 
   time.timeZone = "America/Denver";
 }

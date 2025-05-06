@@ -11,8 +11,8 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     image = pkgs.fetchurl {
-      url = "https://static-community.frame.work/original/2X/f/f1ee3ca6ddf6aa3c01e3b50ed3e149ab7e4211c1.jpeg";
-      sha256 = "e3e3980717482daa0f4cae2ccf6d7ba60ba3c78be95ffd856971d6980229a7ed";
+      url = "https://i.redd.it/dig1tcpfxsk51.png";
+      sha256 = "e1258347b368ba7ac557cc225577687f691e2486473a57003369fd364cbe5ee2";
     };
 
     # These fonts seme fine for now, might override them later if I find better fonts

@@ -7,8 +7,6 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     nixvim.url = "github:nix-community/nixvim/nixos-24.11";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +16,6 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.home-manager.follows = "home-manager";
 
-    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
   outputs =
@@ -28,7 +25,6 @@
     }@inputs:
     let
       commonModules = [
-        inputs.sops-nix.nixosModules.sops
         ./overlays
       ];
 
@@ -41,9 +37,8 @@
     in
     {
       nixosConfigurations = {
-        DavidFramework = mkSystem [
-          ./hosts/framework
-          inputs.minegrub-theme.nixosModules.default
+        skog = mkSystem [
+          ./hosts/bear
         ];
       };
     };
