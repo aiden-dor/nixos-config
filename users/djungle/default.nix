@@ -15,6 +15,12 @@
     media.sioyek.enable = true;
   };
 
+  home.packages = with pkgs;[
+  	keepassxc
+	mpv
+	lazygit
+  ];
+
   home.username = "djungle";
   home.homeDirectory = "/home/djungle";
 
