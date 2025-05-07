@@ -13,7 +13,6 @@ in
     ./hyperland
     ./sway
     ./cliphist.nix
-    ./kanshi.nix
     ./mako.nix
     ./rofi.nix
     ./screenshots.nix

@@ -21,6 +21,9 @@
   programs = {
     sway.enable = true;
   };
+  hardware.graphics = {
+    enable = true;
+  };
 
   # Dumb hack required to get brightness working properly
   services.udev.extraRules = ''
@@ -33,6 +36,9 @@
     NIXOS_OZONE_WL = "1";
     # WAYLAND_DISPLAY = "1"; Setting this to true breaks our greeter
   };
+  networking.extraHosts = ''
+
+  '';
 
   users.users = {
     djungle = {
@@ -40,7 +46,7 @@
       extraGroups = [
         "video"
         "networkmanager"
-	"wheel"
+        "wheel"
       ];
     };
   };
@@ -56,10 +62,9 @@
 
     extraSpecialArgs = {
       inherit inputs outputs;
-      displayProfiles = import ./monitors.nix;
     };
 
-    users.djungle= import ../../users/djungle;
+    users.djungle = import ../../users/djungle;
     users.root = import ../../users/root;
 
   };

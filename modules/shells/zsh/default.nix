@@ -1,9 +1,12 @@
-{ lib,
+{
+  lib,
   config,
-  ... }:
+  ...
+}:
 let
   cfg = config.modules.shells.zsh;
-in {
+in
+{
   options.modules.shells = {
     zsh.enable = lib.mkEnableOption "Use the zsh shell";
   };
@@ -18,13 +21,16 @@ in {
 
       autosuggestion = {
         enable = true;
-        strategy = [ "history" "completion" ];
+        strategy = [
+          "history"
+          "completion"
+        ];
       };
 
       oh-my-zsh = {
         enable = true;
-        theme = "rkj-repos";
-        plugins = [ ]; # TODO find good plugins
+        theme = "lambda";
+        plugins = [ "git" ]; # TODO find good plugins
       };
     };
   };

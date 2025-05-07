@@ -27,5 +27,9 @@
 
     # System management
     smartmontools
+
+    #terminal tools
+    tmux
+    screen
   ];
 }

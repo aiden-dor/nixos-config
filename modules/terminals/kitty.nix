@@ -27,7 +27,7 @@ in
         enable_audio_bell = false;
         mouse_hide_wait = "-1.0";
         window_padding_width = 10;
-        background_opacity = "0.5";
+        background_opacity = "0.8";
         background_blur = 5;
         # Mappings from https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
         symbol_map =

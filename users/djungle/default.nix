@@ -1,8 +1,10 @@
-{ ... }:
+{
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../common
-    ./secrets
   ];
 
   modules = {
@@ -15,10 +17,11 @@
     media.sioyek.enable = true;
   };
 
-  home.packages = with pkgs;[
-  	keepassxc
-	mpv
-	lazygit
+  home.packages = with pkgs; [
+    keepassxc
+    mpv
+    lazygit
+    nwg-displays
   ];
 
   home.username = "djungle";

@@ -9,12 +9,6 @@
       efiSupport = true;
       configurationLimit = 10; # only store 10 configurations
 
-      minegrub-theme = {
-        enable = true;
-        splash = "Flakey";
-        background = "background_options/1.20 - [Trails & Tales].png";
-        boot-options-count = 4;
-      };
     };
   };
 }

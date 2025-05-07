@@ -82,7 +82,7 @@ in
 
             # Don't follow the mouse to change window focus
             # Should still change on click
-            followMouse = false;
+            followMouse = true;
           };
 
           gaps = {
@@ -101,15 +101,6 @@ in
           };
 
           defaultWorkspace = "1";
-
-          assigns = {
-            "4" = [
-              { app_id = "discord"; }
-            ];
-            "10" = [
-              { app_id = "spotify"; }
-            ];
-          };
 
           floating = {
             modifier = "${mod}";
@@ -257,6 +248,20 @@ in
           exec ${lib.getExe light} -N 0.01 
         '';
       };
+    services.kanshi = {
+      enable = true;
+      profiles = {
+        default = {
+          outputs = [
+            {
+              criteria = "eDP-1";
+              scale = 1.2;
+              status = "enable";
+            }
+          ];
+        };
+      };
+    };
 
   };
 }
