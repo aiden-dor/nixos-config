@@ -8,7 +8,7 @@
 
     # see https://github.com/tinted-theming/schemes
     # For more color schemes
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-pale.yaml";
 
     image = pkgs.fetchurl {
       url = "https://i.redd.it/dig1tcpfxsk51.png";
