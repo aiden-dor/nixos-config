@@ -1,3 +1,4 @@
 .sops.yaml
 result
 *.qcow2
+./hosts/common/networking.nix

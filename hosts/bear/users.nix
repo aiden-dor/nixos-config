@@ -36,10 +36,6 @@
     NIXOS_OZONE_WL = "1";
     # WAYLAND_DISPLAY = "1"; Setting this to true breaks our greeter
   };
-  networking.extraHosts = ''
-
-  '';
-
   users.users = {
     djungle = {
       isNormalUser = true;
