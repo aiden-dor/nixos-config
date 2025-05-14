@@ -31,5 +31,6 @@
     #terminal tools
     tmux
     screen
+    openvpn
   ];
 }

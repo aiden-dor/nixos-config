@@ -19,7 +19,6 @@
     ./regreet.nix
     ./sound.nix
     ./openssh.nix
-    ./power.nix
   ];
 
   hosts = {
