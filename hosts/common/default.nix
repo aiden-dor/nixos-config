@@ -19,6 +19,7 @@
     ./regreet.nix
     ./sound.nix
     ./openssh.nix
+    ./openvpn.nix
   ];
 
   hosts = {
