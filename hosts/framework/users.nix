@@ -20,6 +20,9 @@
   # TODO: move this into a os config variable to enable it as a session for users by default.
   programs = {
     sway.enable = true;
+
+    # cause we are gamers
+    steam.enable = true;
   };
 
   # Dumb hack required to get brightness working properly

@@ -70,12 +70,13 @@ in
                 "cpu"
               ]);
 
-            modules-right =
-              [ "group/group-network" ]
-              ++ [ "group/group-audio" ]
-              ++ (rightWrap [ "backlight" ])
-              ++ (rightWrap [ "battery" ])
-              ++ [ "group/group-idle-inhibitor" ];
+            modules-right = [
+              "group/group-network"
+            ]
+            ++ [ "group/group-audio" ]
+            ++ (rightWrap [ "backlight" ])
+            ++ (rightWrap [ "battery" ])
+            ++ [ "group/group-idle-inhibitor" ];
 
             # Sway specific
             "sway/workspaces" = {
@@ -105,7 +106,7 @@ in
                 "class<org.prismlauncher.PrismLauncher>" = "";
                 # no zoom icon, so fuck it well use skypes
                 "class<zoom>" = "";
-                "class<^Steam$>" = "";
+                "class<steam>" = "";
                 # TODO fix this shit
                 # "[Mm]inecraft.*" = "󰍳";
               };
