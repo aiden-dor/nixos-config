@@ -17,12 +17,15 @@ in
       # build system
       gradle
 
-      # prolly java too
-      jdk
-
       # compiler and what-not
       kotlin
     ];
+
+    # sets JAVA HOME
+    programs.java = {
+      enable = true;
+      package = pkgs.jdk;
+    };
   };
 
 }

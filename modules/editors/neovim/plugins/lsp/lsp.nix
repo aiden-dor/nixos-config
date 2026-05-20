@@ -6,6 +6,41 @@
 }:
 let
   cfg = config.languages;
+  kotlin-lsp = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
+    pname = "kotlin-lsp";
+    version = "262.4739.0";
+
+    src = pkgs.fetchzip {
+      url = "https://download-cdn.jetbrains.com/kotlin-lsp/${finalAttrs.version}/kotlin-lsp-${finalAttrs.version}-linux-x64.zip";
+      sha256 = "sha256-Bf2qkFpNhQC/Mz563OapmCXeKN+dTrYyQbOcF6z6b48=";
+      stripRoot = false;
+    };
+
+    nativeBuildInputs = [
+      pkgs.makeWrapper
+      pkgs.autoPatchelfHook
+    ];
+
+    buildInputs = [
+      pkgs.jdk25
+      pkgs.stdenv.cc.cc.lib
+    ];
+
+    installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out/{bin,share}
+      cp -r lib native kotlin-lsp.sh $out/share
+
+      chmod +x $out/share/kotlin-lsp.sh
+      substituteInPlace $out/share/kotlin-lsp.sh \
+        --replace-fail 'LOCAL_JRE_PATH="$DIR/jre/Contents/Home"' 'LOCAL_JRE_PATH="${pkgs.jdk25}"' \
+        --replace-fail 'LOCAL_JRE_PATH="$DIR/jre"' 'LOCAL_JRE_PATH="${pkgs.jdk25}"'
+      makeWrapper $out/share/kotlin-lsp.sh $out/bin/kotlin-lsp
+
+      runHook postInstall
+    '';
+  });
 in
 {
   plugins = {
@@ -57,7 +92,11 @@ in
           cmake.enable = true;
         })
         (lib.mkIf cfg.kotlin.enable {
-          kotlin_language_server.enable = true;
+          kotlin_lsp = {
+            enable = true;
+            package = kotlin-lsp;
+          };
+          # kotlin_language_server.enable = true;
           jdtls.enable = true;
         })
         (lib.mkIf cfg.python.enable {
