@@ -45,8 +45,11 @@
   };
 
   fileSystems."/blue" = {
-    device = "/dev/disk/by-uuid/77e5b6ee-1058-47bf-8e92-ad9bc096ac57";
-    fsType = "xfs";
+    device = "/dev/disk/by-uuid/4f682a83-458a-4b3f-8d8c-7ece72650a6b";
+    fsType = "btrfs";
+    options = [
+      "subvol=/blue"
+    ];
   };
 
   swapDevices = [ ];
@@ -71,7 +74,7 @@
   hardware.nvidia = {
     open = true;
     modesetting.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   };
   hardware.nvidia-container-toolkit.enable = true;

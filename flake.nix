@@ -18,7 +18,8 @@
 
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    #nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    nix-minecraft.url = "github:Catmaniscatlord/nix-minecraft";
   };
 
   outputs =

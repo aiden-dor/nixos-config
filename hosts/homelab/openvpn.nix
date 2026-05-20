@@ -40,6 +40,10 @@ in
   };
 
   config = {
+    hosts.common.firewall.extraInputConfig = ''
+      # Openvpn
+      udp dport ${toString vpnPort} accept
+    '';
 
     environment.systemPackages = [
       pkgs.easyrsa
@@ -50,6 +54,13 @@ in
       clients = {
         panther.ip = "10.8.0.2";
         cat.ip = "10.8.0.3";
+        remi.ip = "10.8.0.4";
+        caleb.ip = "10.8.0.5";
+        louis.ip = "10.8.0.6";
+        gabriel.ip = "10.8.0.7";
+        ivan.ip = "10.8.0.8";
+        alyssa.ip = "10.8.0.9";
+        zach.ip = "10.8.0.10";
       };
 
       servers = {
@@ -153,12 +164,9 @@ in
             printf 'proto udp\n' >> "$output"
             printf 'remote ${public_ip} ${toString vpnPort}\n' >> "$output"
             printf 'nobind\n' >> "$output"
-            printf 'persist-key\n' >> "$output"
-            printf 'persist-tun\n' >> "$output"
             printf 'remote-cert-tls server\n' >> "$output"
             printf 'cipher AES-256-GCM\n' >> "$output"
             printf 'auth SHA256\n' >> "$output"
-            printf 'topology subnet\n' >> "$output"
             printf 'verb 3\n' >> "$output"
 
             # Certificates and keys

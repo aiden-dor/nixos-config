@@ -5,6 +5,11 @@
 }:
 let
   cfg = config.hosts.common.ssh;
+
+  firewallRules = lib.concatStringsSep "\n" (
+    map (port: "tcp dport ${toString port} accept") config.services.openssh.ports
+  );
+
 in
 {
   options.hosts.common.ssh = {
@@ -12,6 +17,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    hosts.common.firewall.extraInputConfig = ''
+      # SSH
+      ${firewallRules}
+    '';
+
     services.openssh = {
       enable = true;
       ports = [
@@ -21,6 +31,7 @@ in
 
       settings = {
         PermitRootLogin = "no";
+        X11Forwarding = true;
       };
 
       # Only allow password logins on port 22

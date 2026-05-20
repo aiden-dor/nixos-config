@@ -22,12 +22,25 @@
         "wheel"
       ];
     };
-    remy = {
+    erik = {
       isNormalUser = true;
       extraGroups = [
         "video"
         "networkmanager"
-        "wheel"
+      ];
+    };
+    caleb = {
+      isNormalUser = true;
+      extraGroups = [
+        "video"
+        "networkmanager"
+      ];
+    };
+    gorp = {
+      isNormalUser = true;
+      extraGroups = [
+        "video"
+        "networkmanager"
       ];
     };
   };
@@ -68,13 +81,39 @@
       home.stateVersion = "25.05";
     };
 
-    users.remy = {
+    users.erik = {
       imports = [
         ../../users/common/base.nix
       ];
 
-      home.username = "remy";
-      home.homeDirectory = "/home/remy";
+      home.username = "erik";
+      home.homeDirectory = "/home/erik";
+
+      programs.home-manager.enable = true;
+
+      home.stateVersion = "25.05";
+    };
+
+    users.caleb = {
+      imports = [
+        ../../users/common/base.nix
+      ];
+
+      home.username = "caleb";
+      home.homeDirectory = "/home/caleb";
+
+      programs.home-manager.enable = true;
+
+      home.stateVersion = "25.05";
+    };
+
+    users.gorp = {
+      imports = [
+        ../../users/common/base.nix
+      ];
+
+      home.username = "gorp";
+      home.homeDirectory = "/home/gorp";
 
       programs.home-manager.enable = true;
 
@@ -96,8 +135,12 @@
 
       programs.git = {
         enable = true;
-        userName = "jellybean";
-        userEmail = "root@jellybean";
+        settings = {
+          user = {
+            name = "jellybean";
+            email = "root@jellybean";
+          };
+        };
       };
     };
   };

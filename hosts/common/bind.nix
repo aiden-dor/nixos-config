@@ -13,6 +13,11 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    hosts.common.firewall.extraInputConfig = ''
+      # allow dns
+      udp dport 53 accept
+    '';
+
     services.bind = {
       enable = true;
     };

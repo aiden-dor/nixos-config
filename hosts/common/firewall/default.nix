@@ -25,11 +25,6 @@ let
     tcp dport 2222 accept
   '';
 
-  dns = ''
-    # allow dns
-    udp dport 53 accept
-  '';
-
   misc = ''
     # Misc ports between 8000-9000 for various user services
     udp dport 8000-9000 accept
@@ -40,12 +35,12 @@ in
 {
   options.hosts.common.firewall = {
     spotifyLocalDiscovery.enable = lib.mkEnableOption "Open ports to allow for spotify local discover";
-    ssh.enable = lib.mkEnableOption "Enable inbound ssh connections";
-    dns.enable = lib.mkEnableOption "Enable inbound ssh connections";
+    #ssh.enable = lib.mkEnableOption "Enable inbound ssh connections";
+    #dns.enable = lib.mkEnableOption "Enable inbound ssh connections";
     ping.enable = lib.mkEnableOption "Enable pinging";
     misc.enable = lib.mkEnableOption "Open up ports 8000-9000 for miscellaneous use";
     extraInputConfig = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.lines;
       default = "";
       description = "Additional firewall rules";
     };
@@ -90,8 +85,6 @@ in
 
               ${lib.optionalString cfg.ping.enable ping}
               ${lib.optionalString cfg.spotifyLocalDiscovery.enable spotify}
-              ${lib.optionalString cfg.ssh.enable ssh}
-              ${lib.optionalString cfg.dns.enable dns}
               ${lib.optionalString cfg.misc.enable misc}
               ${cfg.extraInputConfig}
 
