@@ -17,6 +17,9 @@ in
       # build system
       gradle
 
+      # prolly java too
+      jdk
+
       # compiler and what-not
       kotlin
     ];

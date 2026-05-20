@@ -48,30 +48,23 @@ in
         }
         (lib.mkIf cfg.c-cpp.enable {
           clangd = {
-            enable = cfg.c-cpp.enable;
+            enable = true;
             cmd = [
               "clangd"
               "--clang-tidy"
             ];
           };
-          cmake = {
-            enable = true;
-          };
+          cmake.enable = true;
         })
         (lib.mkIf cfg.kotlin.enable {
-          kotlin_language_server = {
-            enable = cfg.kotlin.enable;
-          };
+          kotlin_language_server.enable = true;
+          jdtls.enable = true;
         })
         (lib.mkIf cfg.python.enable {
-          pyright = {
-            enable = cfg.python.enable;
-          };
+          pyright.enable = true;
         })
         (lib.mkIf cfg.latex.enable {
-          texlab = {
-            enable = cfg.latex.enable;
-          };
+          texlab.enable = true;
           ltex = {
             enable = true;
             settings = {

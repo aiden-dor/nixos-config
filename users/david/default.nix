@@ -10,6 +10,7 @@
       latex.enable = true;
       python.enable = true;
       c-cpp.enable = true;
+      kotlin.enable = true;
     };
 
     office = {
