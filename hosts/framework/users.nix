@@ -62,7 +62,7 @@
       displayProfiles = import ./monitors.nix;
     };
 
-    users.david = import ../../users/lucky;
+    users.lucky = import ../../users/lucky;
     users.root = import ../../users/root;
 
   };
