@@ -41,7 +41,7 @@
     in
     {
       nixosConfigurations = {
-        DavidFramework = mkSystem [
+        Bear = mkSystem [
           ./hosts/framework
           inputs.minegrub-theme.nixosModules.default
         ];

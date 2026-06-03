@@ -2,7 +2,7 @@
 {
   imports = [
     ../common
-    ./secrets
+ 
   ];
 
   modules = {
@@ -21,8 +21,8 @@
     media.sioyek.enable = true;
   };
 
-  home.username = "david";
-  home.homeDirectory = "/home/david";
+  home.username = "lucky";
+  home.homeDirectory = "/home/lucky";
 
   programs.home-manager.enable = true;
 

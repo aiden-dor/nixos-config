@@ -38,14 +38,7 @@
   };
 
   users.users = {
-    david = {
-      isNormalUser = true;
-      extraGroups = [
-        "video"
-        "networkmanager"
-      ];
-    };
-    gorplet = {
+    lucky = {
       isNormalUser = true;
       extraGroups = [
         "video"
@@ -69,8 +62,7 @@
       displayProfiles = import ./monitors.nix;
     };
 
-    users.david = import ../../users/david;
-    users.gorplet = import ../../users/gorplet;
+    users.david = import ../../users/lucky;
     users.root = import ../../users/root;
 
   };

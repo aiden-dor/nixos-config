@@ -11,7 +11,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     image = builtins.path {
-      path = ../../assets/framework-13-wallpaper.jpeg;
+      path = ../../assets/1774063240975742.png;
       name = "wallpaper";
     };
 

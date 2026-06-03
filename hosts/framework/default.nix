@@ -20,7 +20,7 @@
     sound.enable = true;
   };
 
-  networking.hostName = "DavidFramework";
+  networking.hostName = "Bear";
 
   boot.binfmt.emulatedSystems = [
     "riscv64-linux"
