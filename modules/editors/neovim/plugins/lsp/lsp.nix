@@ -12,7 +12,7 @@ let
 
     src = pkgs.fetchzip {
       url = "https://download-cdn.jetbrains.com/kotlin-lsp/${finalAttrs.version}/kotlin-lsp-${finalAttrs.version}-linux-x64.zip";
-      sha256 = "<output of nix-prefetch-url above>";
+      sha256 = "0v1zip57k6gng15zaid0ink91ci7phhjqysf733arb097fwnzkcc";
       stripRoot = false;
     };
   # rest stays the same
