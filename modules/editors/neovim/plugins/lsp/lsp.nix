@@ -8,13 +8,14 @@ let
   cfg = config.languages;
   kotlin-lsp = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "kotlin-lsp";
-    version = "262.4739.0";
+    version = "262.1668.0";  # was 262.4739.0
 
     src = pkgs.fetchzip {
       url = "https://download-cdn.jetbrains.com/kotlin-lsp/${finalAttrs.version}/kotlin-lsp-${finalAttrs.version}-linux-x64.zip";
-      sha256 = "sha256-Bf2qkFpNhQC/Mz563OapmCXeKN+dTrYyQbOcF6z6b48=";
+      sha256 = "<output of nix-prefetch-url above>";
       stripRoot = false;
     };
+  # rest stays the same
 
     nativeBuildInputs = [
       pkgs.makeWrapper
