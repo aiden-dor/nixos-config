@@ -8,8 +8,9 @@
   config = {
     modules = {
       browsers = {
-        chrome.enable = true;
-        firefox.enable = true;
+        chrome.enable = false;
+        firefox.enable = false;
+        zen.enable = true;
       };
 
       editors = {

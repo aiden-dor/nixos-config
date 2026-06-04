@@ -20,6 +20,9 @@
 
     #nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-minecraft.url = "github:Catmaniscatlord/nix-minecraft";
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -44,15 +47,6 @@
         Bear = mkSystem [
           ./hosts/framework
           inputs.minegrub-theme.nixosModules.default
-        ];
-
-        Jellybean = mkSystem [
-          ./hosts/homelab
-          inputs.minegrub-theme.nixosModules.default
-          inputs.nix-minecraft.nixosModules.minecraft-servers
-          {
-            nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
-          }
         ];
       };
     };
