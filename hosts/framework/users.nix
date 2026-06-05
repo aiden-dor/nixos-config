@@ -23,6 +23,7 @@
 
     # cause we are gamers
     steam.enable = true;
+
   };
 
   # Dumb hack required to get brightness working properly
@@ -43,6 +44,7 @@
       extraGroups = [
         "video"
         "networkmanager"
+        "wheel"
       ];
     };
   };

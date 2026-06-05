@@ -30,5 +30,8 @@
 
     # System management
     smartmontools
+
+    # Password Management
+    keepassxc
   ];
 }
