@@ -6,7 +6,7 @@ let
     criteria = "BOE 0x095F Unknown";
     mode = "2256x1504";
     position = "0,0";
-    scale = 1.5;
+    scale = 1.2;
     transform = "normal";
   };
 in
