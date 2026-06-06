@@ -26,8 +26,11 @@
     "riscv64-linux"
   ];
 
+  # This is the swap device, it's required for a proper hibernate
   boot.resumeDevice = "/dev/disk/by-uuid/a5d77715-1089-4db1-879b-b1f641713700";
   boot.kernelParams = [ "resume=/dev/disk/by-uuid/a5d77715-1089-4db1-879b-b1f641713700" ];
+  boot.initrd.systemd.enable = true;
+  
   # time.timeZone = "America/Denver";
   services.automatic-timezoned.enable = true;
 
