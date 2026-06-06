@@ -49,6 +49,13 @@
       inputs.sops-nix.homeManagerModules.sops
       inputs.nixvim.homeModules.nixvim
       { nixpkgs.config.allowUnfree = true; }
+      {
+        stylix.targets.gnome.enable = false;
+        stylix.targets.regreet.enable = false;
+        stylix.targets.zen-browser.enable = false;
+        xdg.configFile."Kvantum/Base16Kvantum/Base16Kvantum.kvconfig".force = true;
+        xdg.configFile."Kvantum/Base16Kvantum/Base16Kvantum.svg".force = true;
+      }
     ];
 
     useUserPackages = true;
