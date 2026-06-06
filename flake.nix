@@ -16,8 +16,6 @@
     stylix.url = "github:nix-community/stylix/release-25.11";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
-
     #nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-minecraft.url = "github:Catmaniscatlord/nix-minecraft";
 
@@ -46,7 +44,6 @@
       nixosConfigurations = {
         Bear = mkSystem [
           ./hosts/framework
-          # inputs.minegrub-theme.nixosModules.default
           inputs.stylix.nixosModules.stylix # Move stylix out of user space, was importing it into both hosts' user.nix and causes warning 
         ];
       };
