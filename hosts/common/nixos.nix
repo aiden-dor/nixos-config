@@ -1,7 +1,7 @@
 {
   # Behaviors For NixOs
   system = {
-    stateVersion = "25.05"; # Current version of NixOS
+    stateVersion = "25.11"; # Current version of NixOS
 
     copySystemConfiguration = false; # With flakes this only copies the first file ...
 

@@ -29,7 +29,7 @@ in
 
       oh-my-zsh = {
         enable = true;
-        theme = "rkj-repos";
+        theme = "lambda";
         plugins = [ ]; # TODO find good plugins
       };
 
