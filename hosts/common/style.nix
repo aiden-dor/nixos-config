@@ -43,9 +43,10 @@
         name = "Noto Color Emoji";
       };
 
-      targets.regreet.enable = false;
+ 
     };
     targets.gnome.enable = false;
+    targets.regreet.enable = false;
   };
   home-manager.sharedModules = [{
     stylix.targets.gnome.enable = false;
