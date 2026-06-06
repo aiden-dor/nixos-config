@@ -42,10 +42,13 @@
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
+
+      targets.regreet.enable = false;
     };
     targets.gnome.enable = false;
   };
   home-manager.sharedModules = [{
     stylix.targets.gnome.enable = false;
+    stylix.targets.zen-browser.profileNames = [ "hh6dn213.Default Profile" ];  # add this
   }];
 }
