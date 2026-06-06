@@ -3,6 +3,7 @@
   outputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -51,11 +52,14 @@
       { nixpkgs.config.allowUnfree = true; }
       {
         stylix.targets.gnome.enable = false;
-        stylix.targets.kvantum.enable = false;
         stylix.targets.zen-browser.enable = false;
-        xdg.configFile."Kvantum/Base16Kvantum/Base16Kvantum.kvconfig".force = true;
-        xdg.configFile."Kvantum/Base16Kvantum/Base16Kvantum.svg".force = true;
       }
+      ({ lib, ... }: {
+        options.stylix.targets.kvantum = lib.mkOption {
+          type = lib.types.attrs;
+          default = {};
+        };
+      })
     ];
 
     useUserPackages = true;
