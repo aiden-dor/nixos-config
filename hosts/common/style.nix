@@ -50,6 +50,6 @@
   };
   home-manager.sharedModules = [{
     stylix.targets.gnome.enable = false;
-    stylix.targets.zen-browser.profileNames = [ "hh6dn213.Default Profile" ];  # add this
+    stylix.targets.zen-browser.profileNames = false;  
   }];
 }
