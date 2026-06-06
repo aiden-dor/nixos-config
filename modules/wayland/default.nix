@@ -41,7 +41,7 @@ in
       wlr-randr # needed to configure outputs manually
 
       # For brightness management
-      light
+      brightnessctl
     ];
     # ++ (lib.optional osConfig.hosts.common.sound.enable wireplumber);
   };

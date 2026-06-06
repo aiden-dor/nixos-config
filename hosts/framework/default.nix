@@ -30,7 +30,7 @@
   boot.resumeDevice = "/dev/disk/by-uuid/a5d77715-1089-4db1-879b-b1f641713700";
   boot.kernelParams = [ "resume=/dev/disk/by-uuid/a5d77715-1089-4db1-879b-b1f641713700" ];
   boot.initrd.systemd.enable = true;
-  
+
   # time.timeZone = "America/Denver";
   services.automatic-timezoned.enable = true;
 
@@ -43,7 +43,7 @@
   };
 
   # How long to suspend before escalating to hibernate (default 180s)
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30min
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "30min";
+  };
 }

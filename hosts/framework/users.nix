@@ -48,6 +48,7 @@
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
       inputs.nixvim.homeModules.nixvim
+      { nixpkgs.config.allowUnfree = true; }
     ];
 
     useUserPackages = true;

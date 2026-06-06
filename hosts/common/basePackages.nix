@@ -34,7 +34,5 @@
     # Password Management
     keepassxc
 
-    # Backlight
-    brightnessctl
   ];
 }
