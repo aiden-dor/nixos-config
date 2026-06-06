@@ -69,7 +69,7 @@ in
               #dwt = disable while typing
               dwt = "enabled";
               # I find this annoying. Its just a preference though
-              tap = "disable";
+              tap = "enable";
               natural_scroll = "enabled";
               middle_emulation = "enabled";
             };

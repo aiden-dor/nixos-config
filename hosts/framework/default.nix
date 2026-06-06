@@ -26,6 +26,8 @@
     "riscv64-linux"
   ];
 
+  boot.resumeDevice = "/dev/disk/by-uuid/a5d77715-1089-4db1-879b-b1f641713700";
+  
   # time.timeZone = "America/Denver";
   services.automatic-timezoned.enable = true;
 }
