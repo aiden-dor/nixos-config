@@ -52,18 +52,5 @@ in
         }
       ];
     };
-
-    # Tell logind to suspend on lid close — swayidle's before-sleep
-    # will fire and lock the screen. Change to "hibernate" if you
-    # prefer skipping suspend entirely.
-    services.logind = {
-      lidSwitch = "suspend-then-hibernate";
-      lidSwitchExternalPower = "lock"; # optional: just lock when plugged in
-    };
-
-    # How long to suspend before escalating to hibernate (default 180s)
-    systemd.sleep.extraConfig = ''
-      HibernateDelaySec=120s
-    '';
   };
 }
