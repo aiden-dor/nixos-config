@@ -1,7 +1,9 @@
-{ lib,
+{
+  lib,
   pkgs,
   config,
-  ... }:
+  ...
+}:
 {
   stylix = {
     enable = true;
@@ -43,13 +45,13 @@
         name = "Noto Color Emoji";
       };
 
- 
     };
     targets.gnome.enable = false;
     targets.regreet.enable = false;
   };
-  home-manager.sharedModules = [{
-    stylix.targets.gnome.enable = false;
-    stylix.targets.zen-browser.profileNames = false;  
-  }];
+  home-manager.sharedModules = [
+    {
+      stylix.targets.gnome.enable = false;
+    }
+  ];
 }
