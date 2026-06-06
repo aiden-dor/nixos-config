@@ -26,5 +26,5 @@
 
   programs.home-manager.enable = true;
 
-  home.stateVersion = "25.11"; # Current version of NixOS
+  home.stateVersion = "26.05"; # Current version of NixOS
 }
