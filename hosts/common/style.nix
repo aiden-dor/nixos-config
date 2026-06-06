@@ -13,7 +13,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     image = builtins.path {
-      path = /home/lucky/Downloads/1775043996716968.jpg;
+      path = ../../assets/purple.jpg;
       name = "wallpaper";
     };
 
@@ -48,7 +48,7 @@
     };
   #   targets.gnome.enable = false;
     targets.regreet.enable = false;
-  # };
+  };
   # home-manager.sharedModules = [
   #   {
   #     stylix.targets.gnome.enable = false;
