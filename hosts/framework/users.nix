@@ -53,7 +53,6 @@
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
       inputs.nixvim.homeModules.nixvim
-      inputs.stylix.homeModules.stylix
     ];
 
     useUserPackages = true;
