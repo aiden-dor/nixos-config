@@ -45,4 +45,7 @@
     };
     targets.gnome.enable = false;
   };
+  home-manager.sharedModules = [{
+    stylix.targets.gnome.enable = false;
+  }];
 }
