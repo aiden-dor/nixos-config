@@ -239,8 +239,8 @@ in
             "XF86AudioStop" = "exec ${lib.getExe playerctl} play-pause --player=%any,mpv,mpd";
 
             # brightness
-            "XF86MonBrightnessUp" = "exec ${lib.getExe light} -A 2";
-            "XF86MonBrightnessDown" = "exec ${lib.getExe light} -U 2";
+            "XF86MonBrightnessUp" = "exec ${lib.getExe pkgs.brightnessctl} set 2%+";
+            "XF86MonBrightnessDown" = "exec ${lib.getExe pkgs.brightnessctl} set 2%-";
           };
 
           modes = {
@@ -279,7 +279,6 @@ in
           set $networkmanager ${config.modules.terminals.default} -e nmtui;
           set $clipboard ${cliphist}/bin/cliphist list | ${rofi}/bin/rofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy;
 
-          exec ${lib.getExe light} -N 0.01 
         '';
 
         extraConfig = ''

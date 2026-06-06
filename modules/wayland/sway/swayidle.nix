@@ -14,32 +14,26 @@ in
   config = lib.mkIf cfg.enable {
     services.swayidle = {
       enable = true;
-      timeouts = [
-        {
-          timeout = 60;
-          command = "${lib.getExe pkgs.light} -O && ${lib.getExe pkgs.light} -T 0.55";
-          resumeCommand = "${lib.getExe pkgs.light} -I";
-        }
-        {
-          timeout = 235;
-          command = "${lib.getExe pkgs.light} -T 0.55";
-          resumeCommand = "${lib.getExe pkgs.light} -I";
-        }
-        {
-          # Fix: swaymsg, not sway
-          timeout = 240;
-          command = "${swaymsg} 'output * dpms off'";
-          resumeCommand = "${swaymsg} 'output * dpms on'";
-        }
-        {
-          timeout = 260;
-          command = swaylock;
-        }
-        {
-          timeout = 270;
-          command = "${systemctl} suspend";
-        }
-      ];
+        timeouts = [
+          {
+            timeout = 60;
+            command = "${lib.getExe pkgs.brightnessctl} -s set 1%";
+            resumeCommand = "${lib.getExe pkgs.brightnessctl} -r";
+          }
+          {
+            timeout = 240;
+            command = "${swaymsg} 'output * dpms off'";
+            resumeCommand = "${swaymsg} 'output * dpms on'";
+          }
+          {
+            timeout = 260;
+            command = swaylock;
+          }
+          {
+            timeout = 270;
+            command = "${systemctl} suspend";
+          }
+        ];
       events = [
         {
           event = "before-sleep";

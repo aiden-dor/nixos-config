@@ -26,10 +26,10 @@
 
   };
 
-  # Dumb hack required to get brightness working properly
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
-  '';
+  # # Dumb hack required to get brightness working properly
+  # services.udev.extraRules = ''
+  #   ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
+  # '';
 
   # Stupid shit so that electron apps work
   # I hate it and think that its stupid
