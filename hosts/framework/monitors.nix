@@ -3,7 +3,7 @@
 let
   laptop = {
     # Name of the monitor, or output port
-    criteria = "BOE 0x095F Unknown";
+    criteria = "BOE 0x0BCA Unknown";
     mode = "2256x1504";
     position = "0,0";
     scale = 1.2;
