@@ -37,7 +37,6 @@
     };
     targets = {
       regreet.enable = false;
-      kvantum.enable = false;
     };
   };
 }

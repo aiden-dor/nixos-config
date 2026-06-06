@@ -32,6 +32,8 @@ in
         # Pass through what languages we have enabled to the nix configuration
         inherit languages;
 
+        nixpkgs.config.allowUnfree = true; # Stallman can suck it
+
         enable = true;
         defaultEditor = true;
 

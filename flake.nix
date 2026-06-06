@@ -36,7 +36,9 @@
       mkSystem =
         modules:
         nixpkgs.lib.nixosSystem {
-          modules = modules ++ commonModules;
+          modules = modules ++ commonModules ++ [{
+            nixpkgs.config.allowUnfree = true;
+          }];
           specialArgs = { inherit inputs; };
         };
     in
