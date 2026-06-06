@@ -46,7 +46,8 @@
       nixosConfigurations = {
         Bear = mkSystem [
           ./hosts/framework
-          inputs.minegrub-theme.nixosModules.default
+          # inputs.minegrub-theme.nixosModules.default
+          inputs.stylix.nixosModules.stylix # Move stylix out of user space, was importing it into both hosts' user.nix and causes warning 
         ];
       };
     };

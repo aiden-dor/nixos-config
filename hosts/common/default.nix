@@ -19,5 +19,6 @@
     ./regreet.nix
     ./sound.nix
     ./ssh.nix
+    ./style.nix
   ];
 }
