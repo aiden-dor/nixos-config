@@ -89,6 +89,7 @@ in
               window-format = "{name}";
               window-rewrite = {
                 "class<google-chrome>" = "󰊯";
+                "class<zen(-beta|.*)>" = "󰊯";
                 "class<firefox>" = "";
                 "class<discord>" = "";
                 "class<libreoffice>" = "";

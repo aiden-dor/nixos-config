@@ -9,7 +9,7 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     image = builtins.path {
-      path = ../../assets/purple.jpg;
+      path = ../../assets/1774063240975742.png;
       name = "wallpaper";
     };
     cursor = {
