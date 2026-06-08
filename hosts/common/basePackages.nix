@@ -34,5 +34,7 @@
     # Password Management
     keepassxc
 
+    nextcloud-client
+
   ];
 }
