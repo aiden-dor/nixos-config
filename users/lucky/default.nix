@@ -15,6 +15,10 @@
 
     dev.opencode.enable = true;
 
+    browsers = {
+      zen.enable = true;
+    };
+
     office = {
       zoom.enable = false;
       libre.enable = false;

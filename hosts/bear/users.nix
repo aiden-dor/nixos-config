@@ -30,7 +30,6 @@
   # I hate it and think that its stupid
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    # WAYLAND_DISPLAY = "1"; Setting this to true breaks our greeter
   };
 
   users.users = {
@@ -45,21 +44,18 @@
   };
 
   home-manager = {
-    sharedModules = [
-      inputs.sops-nix.homeManagerModules.sops
-      inputs.nixvim.homeModules.nixvim
-      { nixpkgs.config.allowUnfree = true; }
-      {
-        stylix.targets.gnome.enable = false;
-        stylix.targets.zen-browser.enable = false;
-      }
-      ({ lib, ... }: {
-        options.stylix.targets.kvantum = lib.mkOption {
-          type = lib.types.attrs;
-          default = {};
-        };
-      })
-    ];
+      sharedModules = [
+        inputs.sops-nix.homeManagerModules.sops
+        inputs.nixvim.homeModules.nixvim
+        inputs.stylix.homeModules.stylix
+        { nixpkgs.config.allowUnfree = true; }
+        {
+          stylix.overlays.enable = false;
+#          stylix.targets.gnome.enable = false;
+#          stylix.targets.zen-browser.enable = false;
+        }
+      ];
+    
 
     useUserPackages = true;
     useGlobalPkgs = true;

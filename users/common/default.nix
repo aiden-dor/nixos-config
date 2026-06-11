@@ -2,6 +2,7 @@
 {
   imports = [
     ./base.nix
+    ./style.nix
   ];
 
   config = {
@@ -9,7 +10,6 @@
       browsers = {
         chrome.enable = false;
         firefox.enable = false;
-        zen.enable = true;
       };
 
       editors = {
