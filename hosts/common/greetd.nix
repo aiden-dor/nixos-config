@@ -54,7 +54,7 @@ in {
         grayscale = false;
         show-failed-attempts = true;
         timer = true;
-        indicator;
+        indicator = true;
         indicator-cylinder-color = "313244";
         indicator-ring-color = "cdd6f4";
         indicator-text-color = "cdd6f4";
