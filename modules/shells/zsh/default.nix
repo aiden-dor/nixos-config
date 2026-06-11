@@ -9,6 +9,13 @@ in
 {
   options.modules.shells = {
     zsh.enable = lib.mkEnableOption "Use the zsh shell";
+    zsh = {
+      theme = lib.mkOption {
+        type = lib.types.str;
+        default = "lambda";
+        description = "rkj-repos";
+      };
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -29,7 +36,7 @@ in
 
       oh-my-zsh = {
         enable = true;
-        theme = "lambda";
+        theme = cfg.theme;
         plugins = [ ]; # TODO find good plugins
       };
 

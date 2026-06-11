@@ -4,11 +4,9 @@
     enable = true;
     settings = {
       indent.enable = true;
-      highlight = {
-        enable = true;
-      };
     };
-    folding = false;
+    folding.enable = false;
+    highlight.disable = false;
     nixvimInjections = true;
     grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
   };

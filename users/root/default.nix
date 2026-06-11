@@ -4,6 +4,8 @@
     ../common/base.nix
   ];
 
+  # allowUnfree set in shared config due to useGlobalPkgs
+
   home.username = "root";
   home.homeDirectory = "/root";
 

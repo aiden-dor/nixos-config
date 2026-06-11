@@ -24,7 +24,12 @@ in
       apply =
         value: if value != "" then value else options.wayland.windowManager.sway.config.value.terminal;
 
-      description = "Default terminal to use for sway, Overrides the chosend global default";
+      description = "Default terminal to use for sway, Overrides the chosen global default";
+    };
+    tap = lib.mkOption {
+      type = lib.types.str;
+      default = "disabled";
+      description = "Tap-to-click, default is disabled";
     };
   };
 
@@ -69,7 +74,7 @@ in
               #dwt = disable while typing
               dwt = "enabled";
               # I find this annoying. Its just a preference though
-              tap = "enable";
+              tap = cfg.tap;
               natural_scroll = "enabled";
               middle_emulation = "enabled";
             };

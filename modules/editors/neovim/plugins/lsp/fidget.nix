@@ -2,9 +2,8 @@
   plugins.fidget = {
     enable = true;
     settings = {
-      logger = {
-        level = "warn"; # “off”, “error”, “warn”, “info”, “debug”, “trace”
-        floatPrecision = 1.0e-2; # Limit the number of decimals displayed for floats
+     logger = {
+        level = "warn"; # "off", "error", "warn", "info", "debug", "trace"
       };
 
       progress = {
@@ -61,11 +60,8 @@
         };
       };
 
-      notification = {
-        pollRate = 10; # How frequently to update and render notifications
-        filter = "info"; # “off”, “error”, “warn”, “info”, “debug”, “trace”
-        historySize = 128; # Number of removed messages to retain in history
-        overrideVimNotify = true;
+     notification = {
+        filter = "info"; # "off", "error", "warn", "info", "debug", "trace"
         redirect.__raw = ''
           function(msg, level, opts)
             if opts and opts.on_open then
@@ -75,27 +71,6 @@
         '';
         configs = {
           default.__raw = "require('fidget.notification').default_config";
-        };
-
-        window = {
-          normalHl = "Comment";
-          winblend = 0;
-          border = "none"; # none, single, double, rounded, solid, shadow
-          zindex = 45;
-          maxWidth = 0;
-          maxHeight = 0;
-          xPadding = 1;
-          yPadding = 0;
-          align = "bottom";
-          relative = "editor";
-        };
-        view = {
-          stackUpwards = true; # Display notification items from bottom to top
-          iconSeparator = " "; # Separator between group name and icon
-          groupSeparator = "---"; # Separator between notification groups
-          groupSeparatorHl =
-            # Highlight group used for group separator
-            "Comment";
         };
       };
     };

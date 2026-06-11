@@ -21,8 +21,8 @@ in
       };
     };
 
-    plugins.treesitter.settings = {
-      highlight.disable = [ "latex" ];
+    plugins.treesitter.highlight = {
+      disable = [ "latex" ];
     };
 
     # taken from https://github.com/lervag/vimtex/wiki/which%E2%80%90key.nvim-support

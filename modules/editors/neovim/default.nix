@@ -28,11 +28,15 @@ in
     in
     lib.mkIf cfg.enable {
       stylix.targets.nixvim.enable = false;
-      programs.nixvim = {
+    programs.nixvim = {
         # Pass through what languages we have enabled to the nix configuration
         inherit languages;
 
-        nixpkgs.config.allowUnfree = true; # Stallman can suck it
+        nixpkgs.config.allowUnfree = true;
+
+ 
+
+
 
         enable = true;
         defaultEditor = true;

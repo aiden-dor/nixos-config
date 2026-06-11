@@ -48,11 +48,8 @@
         inputs.sops-nix.homeManagerModules.sops
         inputs.nixvim.homeModules.nixvim
         inputs.stylix.homeModules.stylix
-        { nixpkgs.config.allowUnfree = true; }
         {
           stylix.overlays.enable = false;
-#          stylix.targets.gnome.enable = false;
-#          stylix.targets.zen-browser.enable = false;
         }
       ];
     

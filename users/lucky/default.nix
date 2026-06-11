@@ -2,8 +2,9 @@
 {
   imports = [
     ../common
-
   ];
+
+  # allowUnfree set in shared config due to useGlobalPkgs
 
   modules = {
     dev.languages = {
@@ -14,6 +15,10 @@
     };
 
     dev.opencode.enable = true;
+
+    shells.zsh.theme = "lambda";
+
+    wayland.sway.tap = "enabled";
 
     browsers = {
       zen.enable = true;

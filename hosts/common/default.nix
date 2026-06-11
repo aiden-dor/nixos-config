@@ -13,8 +13,6 @@
     ./fprintd.nix
     ./networking.nix
     ./nix.nix
-    ./nixos.nix
-    ./nixpkgs.nix
     ./printing.nix
     ./greetd.nix
     ./sound.nix

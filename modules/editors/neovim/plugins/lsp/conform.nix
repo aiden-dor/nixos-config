@@ -110,7 +110,7 @@ in
               __unkeyed-2 = "prettier";
               stop_after_first = true;
             };
-            nix = [ "nixfmt-rfc-style" ];
+            nix = [ "nixfmt" ];
             yaml = {
               __unkeyed-1 = "prettierd";
               __unkeyed-2 = "prettier";
@@ -148,8 +148,8 @@ in
 
         formatters = lib.mkMerge [
           {
-            nixfmt-rfc-style = {
-              command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+            nixfmt = {
+              command = "${lib.getExe pkgs.nixfmt}";
             };
             alejandra = {
               command = "${lib.getExe pkgs.alejandra}";
