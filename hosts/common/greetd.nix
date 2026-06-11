@@ -26,7 +26,8 @@ in {
       pkgs.swaylock-effects
     ];
 
-    services.swaylock = {
+    programs.swaylock = {
+      enable = false;
       settings = {
         effect-bg = "1e1e2e";
         effect-color = "cdd6f4";
