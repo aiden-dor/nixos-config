@@ -9,22 +9,19 @@
   hosts.common = {
     battery_monitor.enable = true;
     bluetooth.enable = true;
-    chromecast.enable = true;
+    chromecast.enable = false;
     firewall = {
       spotifyLocalDiscovery.enable = true;
       ping.enable = true;
     };
     fprintd.enable = true;
     greetd.enable = true;
-    printing.enable = true;
+    printing.enable = false;
     sound.enable = true;
+    ssh.enable = true;
   };
 
   networking.hostName = "Bear";
-
-  boot.binfmt.emulatedSystems = [
-    "riscv64-linux"
-  ];
 
   # This is the swap device, it's required for a proper hibernate
   boot.resumeDevice = "/dev/disk/by-uuid/a5d77715-1089-4db1-879b-b1f641713700";

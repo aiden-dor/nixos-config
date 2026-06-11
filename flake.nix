@@ -36,9 +36,7 @@
       mkSystem =
         modules:
         nixpkgs.lib.nixosSystem {
-          modules = modules ++ commonModules ++ [{
-            nixpkgs.config.allowUnfree = true;
-          }];
+          modules = modules ++ commonModules;
           specialArgs = { inherit inputs; };
         };
     in
@@ -46,7 +44,6 @@
       nixosConfigurations = {
         Bear = mkSystem [
           ./hosts/bear
-#          inputs.stylix.nixosModules.stylix # Move stylix out of user space, was importing it into both hosts' user.nix and causes warning 
         ];
       };
     };
