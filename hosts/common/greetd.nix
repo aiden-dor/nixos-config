@@ -11,7 +11,7 @@ in {
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '🕰  ${time} on ${date}' --cmd Sway";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '🕰  ${t} on ${d}' --cmd Sway";
           user = "greeter";
         };
       };
