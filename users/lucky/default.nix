@@ -14,8 +14,8 @@
     };
 
     office = {
-      zoom.enable = true;
-      libre.enable = true;
+      zoom.enable = false;
+      libre.enable = false;
     };
 
     media.sioyek.enable = true;
