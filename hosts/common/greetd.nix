@@ -22,9 +22,11 @@ in {
       description = "Greeter User";
     };
 
-    programs.swaylock = {
-      enable = true;
-      package = pkgs.swaylock-effects;
+    environment.systemPackages = [
+      pkgs.swaylock-effects
+    ];
+
+    services.swaylock = {
       settings = {
         effect-bg = "1e1e2e";
         effect-color = "cdd6f4";
