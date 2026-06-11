@@ -58,7 +58,7 @@ in {
         indicator-cylinder-color = "313244";
         indicator-ring-color = "cdd6f4";
         indicator-text-color = "cdd6f4";
-        clock;
+        clock = true;
         time-size = 72;
         month-size = 48;
         date-size = 48;
