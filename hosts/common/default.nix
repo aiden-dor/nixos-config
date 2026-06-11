@@ -16,7 +16,7 @@
     ./nixos.nix
     ./nixpkgs.nix
     ./printing.nix
-    ./regreet.nix
+    ./greetd.nix
     ./sound.nix
     ./ssh.nix
     ./style.nix

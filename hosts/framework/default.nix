@@ -15,8 +15,8 @@
       ping.enable = true;
     };
     fprintd.enable = true;
+    greetd.enable = true;
     printing.enable = true;
-    regreet.enable = true;
     sound.enable = true;
   };
 

@@ -35,8 +35,6 @@
         name = "Noto Color Emoji";
       };
     };
-    targets = {
-      regreet.enable = false;
-    };
+    targets = { };
   };
 }

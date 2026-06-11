@@ -36,5 +36,11 @@
 
     nextcloud-client
 
+    # Lock screen
+    swaylock-effects
+
+    # Greetd greeter
+    tuigreet
+
   ];
 }
