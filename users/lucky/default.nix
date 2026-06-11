@@ -10,12 +10,16 @@
       latex.enable = true;
       python.enable = true;
       c-cpp.enable = true;
-      kotlin.enable = true;
+      kotlin.enable = false;
     };
+    
+    dev.opencode = true;
 
     office = {
-      zoom.enable = true;
-      libre.enable = true;
+      zoom.enable = false;
+      libre.enable = false;
+      nextcloud.enable = true;
+      keepassxc.enable = true;
     };
 
     media.sioyek.enable = true;

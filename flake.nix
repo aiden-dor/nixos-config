@@ -45,7 +45,7 @@
     {
       nixosConfigurations = {
         Bear = mkSystem [
-          ./hosts/framework
+          ./hosts/bear
           inputs.stylix.nixosModules.stylix # Move stylix out of user space, was importing it into both hosts' user.nix and causes warning 
         ];
       };

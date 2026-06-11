@@ -13,6 +13,7 @@ in
     ./latex
     ./kotlin
     ./python
+    ./opencode
   ];
 
   options.modules.dev.tools = {

@@ -3,6 +3,7 @@
   outputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -16,19 +17,14 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # Stupid so that sway shows up in greetd.
-  # TODO: move this into a os config variable to enable it as a session for users by default.
-  programs = {
-    sway.enable = true;
+  # Enable Sway as a session for greetd
+    programs = {
+      sway.enable = true;
 
     # cause we are gamers
     steam.enable = true;
-  };
 
-  # Dumb hack required to get brightness working properly
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
-  '';
+  };
 
   # Stupid shit so that electron apps work
   # I hate it and think that its stupid
@@ -38,18 +34,12 @@
   };
 
   users.users = {
-    david = {
+    lucky = {
       isNormalUser = true;
       extraGroups = [
         "video"
         "networkmanager"
-      ];
-    };
-    gorplet = {
-      isNormalUser = true;
-      extraGroups = [
-        "video"
-        "networkmanager"
+        "wheel"
       ];
     };
   };
@@ -58,7 +48,17 @@
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
       inputs.nixvim.homeModules.nixvim
-      inputs.stylix.homeModules.stylix
+      { nixpkgs.config.allowUnfree = true; }
+      {
+        stylix.targets.gnome.enable = false;
+        stylix.targets.zen-browser.enable = false;
+      }
+      ({ lib, ... }: {
+        options.stylix.targets.kvantum = lib.mkOption {
+          type = lib.types.attrs;
+          default = {};
+        };
+      })
     ];
 
     useUserPackages = true;
@@ -69,8 +69,7 @@
       displayProfiles = import ./monitors.nix;
     };
 
-    users.david = import ../../users/david;
-    users.gorplet = import ../../users/gorplet;
+    users.lucky = import ../../users/lucky;
     users.root = import ../../users/root;
 
   };

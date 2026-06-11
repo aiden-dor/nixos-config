@@ -31,19 +31,5 @@
     # System management
     smartmontools
 
-    # Password Management
-    keepassxc
-
-    nextcloud-client
-
-    # Lock screen
-    swaylock-effects
-
-    # Greetd greeter
-    tuigreet
-
-    # AI Shit
-    opencode
-
   ];
 }
