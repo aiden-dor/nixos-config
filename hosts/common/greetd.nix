@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 let
   cfg = config.hosts.common.greetd;
 in {
