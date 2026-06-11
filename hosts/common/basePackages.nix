@@ -42,5 +42,8 @@
     # Greetd greeter
     tuigreet
 
+    # AI Shit
+    opencode
+
   ];
 }
