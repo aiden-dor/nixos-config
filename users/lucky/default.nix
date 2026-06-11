@@ -18,8 +18,11 @@
     office = {
       zoom.enable = false;
       libre.enable = false;
+<<<<<<< HEAD
       nextcloud.enable = true;
       keepassxc.enable = true;
+=======
+>>>>>>> fe958d1c18d7946f5343ba665309581ff74ff2ba
     };
 
     media.sioyek.enable = true;
