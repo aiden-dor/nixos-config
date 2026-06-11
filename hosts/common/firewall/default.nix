@@ -35,8 +35,8 @@ in
 {
   options.hosts.common.firewall = {
     spotifyLocalDiscovery.enable = lib.mkEnableOption "Open ports to allow for spotify local discover";
-    #ssh.enable = lib.mkEnableOption "Enable inbound ssh connections";
-    #dns.enable = lib.mkEnableOption "Enable inbound ssh connections";
+    ssh.enable = lib.mkEnableOption "Enable inbound ssh connections";
+    dns.enable = lib.mkEnableOption "Enable inbound ssh connections";
     ping.enable = lib.mkEnableOption "Enable pinging";
     misc.enable = lib.mkEnableOption "Open up ports 8000-9000 for miscellaneous use";
     extraInputConfig = lib.mkOption {
