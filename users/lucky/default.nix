@@ -31,7 +31,7 @@
       keepassxc.enable = true;
     };
 
-    misc.caffeine.enable = false;
+    misc.caffeine.enable = true;
 
     media.sioyek.enable = true;
   };

@@ -1,7 +1,6 @@
-{
-  lib,
-  ...
-}:
+{ ... }:
+let
+in
 {
   imports = [
     ./caffeine

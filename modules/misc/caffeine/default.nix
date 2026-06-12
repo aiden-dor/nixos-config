@@ -8,8 +8,8 @@ let
   cfg = config.modules.misc.caffeine;
 in
 {
-  options.modules.misc.caffeine = {
-    enable = lib.mkEnableOption "caffeine-ng";
+  options.modules.misc = {
+    caffeine.enable = lib.mkEnableOption "Caffeine to prevent screen lcok";
   };
 
   config = lib.mkIf cfg.enable {
@@ -17,4 +17,5 @@ in
       caffeine-ng
     ];
   };
+
 }
