@@ -11,5 +11,6 @@
     ./social
     ./terminals
     ./wayland
+    ./misc
   ];
 }
