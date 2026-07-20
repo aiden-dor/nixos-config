@@ -10,7 +10,6 @@ let
 in
 {
   imports = [
-    ../../misc/caffeine/default.nix
     ./swayidle.nix
     ./swaylock.nix
   ];

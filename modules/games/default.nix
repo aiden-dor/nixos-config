@@ -1,7 +1,10 @@
-{ lib,
-  ... }:
+{
+  lib,
+  ...
+}:
 {
   imports = [
+    ./ruffle
     ./minecraft
   ];
 }

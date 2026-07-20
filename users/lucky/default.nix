@@ -31,6 +31,12 @@
       keepassxc.enable = true;
     };
 
+    games.ruffle.enable = true;
+
+    social = {
+      signal.enable = true;
+    };
+
     misc.caffeine.enable = true;
 
     media.sioyek.enable = true;
