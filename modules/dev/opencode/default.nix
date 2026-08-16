@@ -19,7 +19,7 @@ in
 
     localLlamaURL = lib.mkOption {
       type = lib.types.str;
-      default = "http://192.168.1.20:8080/v1";
+      default = "http://192.168.1.8:8080/v1";
       description = "Base URL for the local llama.cpp server";
     };
   };
@@ -50,3 +50,4 @@ in
     };
   };
 }
+

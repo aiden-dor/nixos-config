@@ -4,5 +4,6 @@ in
 {
   imports = [
     ./caffeine
+    ./openvpn
   ];
 }

@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./music
+    ./photography
   ];
 
   options.modules.media = {

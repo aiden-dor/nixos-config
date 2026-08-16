@@ -37,7 +37,10 @@
       signal.enable = true;
     };
 
-    misc.caffeine.enable = true;
+    misc = {
+      caffeine.enable = true;
+      openvpn.enable = true;
+    };
 
     media.sioyek.enable = true;
   };
